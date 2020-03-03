@@ -1,0 +1,16 @@
+﻿  ASCII.cpp
+  Battle.cpp
+  Cat.cpp
+C:\Users\sy\Desktop\ASCII\ASCII\Cat.cpp(32,6): warning C4129: ' ': unrecognized character escape sequence
+  Character.cpp
+  Combat.cpp
+  Enemy.cpp
+  Guitarist.cpp
+  Juggler.cpp
+  Lucy.cpp
+  Math.cpp
+  Nerd.cpp
+  Turtle.cpp
+C:\Users\sy\Desktop\ASCII\ASCII\Turtle.cpp(47,6): warning C4129: '_': unrecognized character escape sequence
+  Generating Code...
+  ASCII.vcxproj -> C:\Users\sy\Desktop\ASCII\Debug\ASCII.exe
