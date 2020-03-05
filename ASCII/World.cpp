@@ -2,12 +2,14 @@
 #include "World.h"
 
 World::World() {
-
+	finalboss = false;
 }
+//Move forward in the world
 void World::forward(Character* user1) {
 	BattleSystem system(user1);
+	srand((unsigned int)time(0));
 	//Has more miles, doesn't have an enemy saved, and has more than 0 health
-	while (user1->getMiles() > 1 && !(user1->isFighting()) && user1->gethealth() > 0) {
+	while (user1->getMiles() > 1 && !(user1->hasEnemy()) && user1->gethealth() > 0) {
 		user1->changeMiles(-1);
 		std::cout << user1->getMiles() << " miles left. \n";
 		int prob = rand() % 100;
@@ -44,18 +46,19 @@ void World::forward(Character* user1) {
 	}
 }
 
+//Starting game menu
 void World::gameMenu(Character* user1) {
 	std::string x;
-	std::cout << "Michael Lacey has been committing unthinkable crimes against humanity! "
+	std::cout << "Soham Sonthi has been committing unthinkable crimes against humanity! "
 		<< "It is your job to stop him! \n"
 		<< "You need to travel " << user1->getMiles() << " miles to get to him. \n";
-	if (user1->isFighting()) {
+	if (user1->hasEnemy()) {
 		std::cout << "You were in the middle of a fight! \n";
 		BattleSystem system(user1);
 		system.fight(user1->getEnemy());
 	}
 
-	while (user1->getMiles() > 0 && !(user1->isFighting())) {
+	while (user1->getMiles() > 0 && !(user1->hasEnemy())) {
 		if (user1->gethealth() <= 0) {
 			user1->gameover();
 			return;
@@ -83,7 +86,7 @@ void World::gameMenu(Character* user1) {
 		else
 			std::cout << "Please input a valid command. \n";
 	}
-	if (!(user1->isFighting())) {
+	if (!(user1->hasEnemy())) {
 		FinalBoss fb;
 		fb.fightFinal(user1);
 	}

@@ -1,12 +1,7 @@
 #include "Enemy.h"
 
 Enemy::Enemy() {
-	name = "Enemy";
-	level = 1;
-	attack = 1;
-	defense = 1;
-	speed = 1;
-	health = 1;
+
 }
 Enemy::~Enemy() {
 	

@@ -11,6 +11,7 @@ public:
 	void printItems();
 	void getItem(std::string name);
 	void itemMenu();
+
 	void potion();
 	void megapotion();
 	void lucy();

@@ -3,7 +3,7 @@
 
 void FinalBoss::fightFinal(Character* user1) {
 	std::cout << "Final Boss time! \n"
-		<< "Michael Lacey is a former math professor! \n"
+		<< "Michael Sonthi is a former math professor! \n"
 		<< "He gives you the math problems that have been plauging the world!!! \n\n";
 	drawfinalboss();
 	if (math(user1))
@@ -46,11 +46,11 @@ bool FinalBoss::math(Character* user1) {
 	std::cout << "The answer to this question is: " << rand1 << " * " << rand2 << std::endl;
 	std::cin >> answer;
 	if (answer == rand1 * rand2) {
-		std::cout << "Professor Lacey is shocked at your intelligence. \n";
+		std::cout << "Professor Sonthi is shocked at your intelligence. \n";
 		return true;
 	}
 	else {
-		std::cout << "Professor Lacey has no regrets in life anymore. \n"
+		std::cout << "Professor Sonthi has no regrets in life anymore. \n"
 			<< "You take 10 damage. \n" << std::endl;
 		user1->takedamage(10);
 		return 1;
@@ -72,11 +72,11 @@ bool FinalBoss::math1(Character* user1) {
 	std::cout << "What is the answer to this question? " << rand1 << " * " << rand2 << std::endl;
 	std::cin >> answer;
 	if (answer == rand1 * rand2) {
-		std::cout << "Professor Lacey shakes his head vigorously! \n";
+		std::cout << "Professor Sonthi shakes his head vigorously! \n";
 		return true;
 	}
 	else {
-		std::cout << "Professor Lacey congratulates you for being so dumb. \n"
+		std::cout << "Professor Sonthi congratulates you for being so dumb. \n"
 			<< "You take 4 damage.\n" << std::endl;
 		user1->takedamage(4);
 		return true;
@@ -87,7 +87,7 @@ bool FinalBoss::math1(Character* user1) {
 	}
 }
 
-bool FinalBoss:: math2(Character* user1) {
+bool FinalBoss::math2(Character* user1) {
 	int rand1, rand2, answer;
 	double t = clock();
 	std::cout << "You have " << user1->gethealth() << " health points left. \n";
@@ -96,11 +96,11 @@ bool FinalBoss:: math2(Character* user1) {
 	std::cout << "What is the answer to this question? " << rand1 << " * " << rand2 << std::endl;
 	std::cin >> answer;
 	if (answer == rand1 * rand2) {
-		std::cout << "Professor Lacey is going to quit his vacation to work on his math problems. \n";
+		std::cout << "Professor Sonthi is going to quit his vacation to work on his math problems. \n";
 		return true;
 	}
 	else {
-		std::cout << "Professor Lacey congratualates himself for making such great math problems. \n"
+		std::cout << "Professor Sonthi congratualates himself for making such great math problems. \n"
 			<< "You take 3 damage.\n" << std::endl;
 		user1->takedamage(3);
 		return true;
@@ -112,7 +112,7 @@ bool FinalBoss:: math2(Character* user1) {
 	}
 }
 
-bool FinalBoss:: math3(Character* user1) {
+bool FinalBoss::math3(Character* user1) {
 	int rand1, rand2, answer;
 	double t = clock();
 	std::cout << "You have " << user1->gethealth() << " health points left. \n";
@@ -121,11 +121,11 @@ bool FinalBoss:: math3(Character* user1) {
 	std::cout << "What is the answer to this question? " << rand1 << " * " << rand2 << std::endl;
 	std::cin >> answer;
 	if (answer == rand1 * rand2) {
-		std::cout << "Professor Lacey is thinking about giving essay questions for his next midterm! \n";
+		std::cout << "Professor Sonthi is thinking about giving essay questions for his next midterm! \n";
 		return true;
 	}
 	else {
-		std::cout << "Professor Lacey is going to ask for a raise for his exemplary work on mathematics. \n"
+		std::cout << "Professor Sonthi is going to ask for a raise for his exemplary work on mathematics. \n"
 			<< "You take 2 damage.\n" << std::endl;
 		user1->takedamage(2);
 		return true;
@@ -146,11 +146,11 @@ bool FinalBoss::finalmath(Character* user1) {
 	std::cout << "What is the answer to this question? " << rand1 << " * " << rand2 << std::endl;
 	std::cin >> answer;
 	if (answer == rand1 * rand2) {
-		std::cout << "Professor Lacey decides to teach a different class...";
+		std::cout << "Professor Sonthi decides to teach a different class...";
 		return true;
 	}
 	else {
-		std::cout << "Professor Lacey thinks vididly about the youth of his day...\n"
+		std::cout << "Professor Sonthi thinks vididly about the youth of his day...\n"
 			<< "You take 100 damage.\n";
 		user1->takedamage(100);
 		return true;
@@ -162,7 +162,7 @@ bool FinalBoss::finalmath(Character* user1) {
 }
 
 void FinalBoss::congrats() {
-	std::cout << "Congratulations!!! You have defeated Professor Lacey and put an end to his evil crimes. " << std::endl
+	std::cout << "Congratulations!!! You have defeated Professor Sonthi and put an end to his evil crimes. " << std::endl
 		<< "                                                                       ,d  " << std::endl
 		<< "								       88  " << std::endl
 		<< " ,adPPYba,  ,adPPYba,  8b,dPPYba,   ,adPPYb,d8 8b,dPPYba, ,adPPYYba, MM88MMM    ,adPPYba, " << std::endl

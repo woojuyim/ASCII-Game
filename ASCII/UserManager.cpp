@@ -2,6 +2,7 @@
 
 UserManager::UserManager() {
 	program = true;
+	w = new World();
 
 }
 UserManager::~UserManager() {
@@ -10,8 +11,10 @@ UserManager::~UserManager() {
 		user = nullptr;
 	}
 	userList.clear();
+	delete w;
 }
 
+//Starting screen
 void UserManager::startMenu() {
 	while (program) {
 		std::cout << "Welcome to the ASCII game! \n";
@@ -42,7 +45,7 @@ void UserManager::startMenu() {
 
 }
 		
-
+//Create an account
 void UserManager::createAccount() {
 	std::string username, password;
 	std::cout << "Create an Account! \n"
@@ -56,6 +59,7 @@ void UserManager::createAccount() {
 	}
 }
 
+//Login to existing account
 void UserManager::login() {
 	std::string username, password;
 	std::cout << "Login! \n"
@@ -74,7 +78,7 @@ void UserManager::login() {
 		}
 	}
 	if (u != nullptr) {
-		w.gameMenu(u->getCharacter());
+		w->gameMenu(u->getCharacter());
 	}
 	else {
 		std::cout << "There is no account with that username and password. \n";
@@ -82,6 +86,7 @@ void UserManager::login() {
 
 
 }
+//Check if account is taken
 bool UserManager::takenAccount(std::string &username, std::string &password) {
 	std::string name, pass;
 	for (auto user : userList) {
@@ -95,12 +100,14 @@ bool UserManager::takenAccount(std::string &username, std::string &password) {
 	return false;
 }
 
+//Show all accounts made
 void UserManager::checkallAccounts() {
 	for (auto account : userList) {
 		std::cout << "Name: " << account->getName() << " Password: " << account->getPassword() << std::endl;
 	}
 }
 
+//Compare string function
 bool UserManager :: compareString(std::string& one, std::string& two){
 	return ((one.size() == two.size()) && std::equal(one.begin(), one.end(), two.begin(), [](char& a, char& b) {
 		return std::tolower(a) == std::tolower(b);

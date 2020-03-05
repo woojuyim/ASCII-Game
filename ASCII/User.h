@@ -1,7 +1,6 @@
 #pragma once
 #include "EnemyClasses/Enemy.h"
 
-
 class User {
 public:
 	User(std::string name, std::string password);
@@ -14,5 +13,5 @@ public:
 private:
 	std::string name;
 	std::string password;
-	Character *user1;
+	Character* user1;
 };

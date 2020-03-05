@@ -15,10 +15,12 @@ public:
 private:
 	void checkallAccounts();
 	bool takenAccount(std::string& username, std::string& password);
-	std::vector<User*> userList;
 	bool compareString(std::string& one, std::string& two);
+
+	World *w;
+	std::vector<User*> userList;
 	bool program;
-	World w;
+	
 
 };
 	

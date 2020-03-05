@@ -12,9 +12,10 @@ private:
 	void run();
 	void gainExperience();
 
+	Enemy* enemy;
+	Character* user1;
 	bool battle;
 	bool userTurn;
-	Enemy *enemy;
-	Character *user1;
+	
 
 };

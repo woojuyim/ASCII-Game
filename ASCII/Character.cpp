@@ -12,6 +12,8 @@ Character :: Character() {
 	experience = 0;
 	itemManager = new ItemManager(this);
 	miles = 40;
+	tempenemy = nullptr;
+	isFighting = false;
 }
 Character :: ~Character() {
 	delete itemManager;
@@ -60,7 +62,7 @@ void Character :: itemget(std::string _item) {
 	itemManager->getItem(_item);
 }
 void Character::setFight(bool maybe) {
-	fight = maybe;
+	isFighting = maybe;
 }
 void Character::saveEnemy(Enemy* enemy) {
 	tempenemy = enemy;

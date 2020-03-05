@@ -2,6 +2,9 @@
 
 BattleSystem::BattleSystem(Character* user1) {
 	this->user1 = user1;
+	enemy = nullptr;
+	battle = false;
+	userTurn = true;
 }
 BattleSystem::~BattleSystem() {
 	if (enemy != nullptr) {

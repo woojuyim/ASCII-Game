@@ -16,8 +16,11 @@ public:
 	World();
 
 	void forward(Character* user1);
+
 	void gameMenu(Character* user1);
 
+private: 
+	bool finalboss;
 
 };
 

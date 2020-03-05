@@ -13,23 +13,29 @@ public:
 	Character();
 	~Character();
 
-	void gameover();
+	//Stat change functions
 	void changeMiles(int _miles);
 	void increaseexp(int _experience);
 	void changeattack(int _attack);
 	void changedef(int _defense);
-	void levelup();
 	void takedamage(int damage);
 	void increaseHealth(int num);
-	void items(); 
-	
-	bool isFighting() { return fight; }
-	void setFight(bool maybe);
+	void levelup();
 
+	//Items
+	void items(); 
 	void itemget(std::string _item);
-	void status();
+
+	//Saving functions
+	bool hasEnemy() { return isFighting; }
+	void setFight(bool maybe);
 	void saveEnemy(Enemy* enemy);
 
+	//Status 
+	void status();
+	void gameover();
+
+	//Getters
 	int gethealth() { return health; }
 	int getMaxHealth() { return maxhealth; }
 	int getattack() { return attack; }
@@ -41,6 +47,8 @@ public:
 	Enemy* getEnemy() { return tempenemy; }
 
 private:
+	Enemy* tempenemy;
+	ItemManager* itemManager;
 	int health;
 	int maxhealth;
 	int attack;
@@ -48,10 +56,8 @@ private:
 	int speed;
 	int experience;
 	int level;
-	ItemManager *itemManager;
 	int miles; 
-	bool fight;
-	Enemy* tempenemy;
+	bool isFighting;
 
 };
 

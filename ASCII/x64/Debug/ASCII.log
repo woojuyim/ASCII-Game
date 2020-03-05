@@ -1,7 +1,17 @@
 ﻿  ASCII.cpp
+  BattleSystem.cpp
   Character.cpp
+  Cat.cpp
+  Enemy.cpp
+  Guitarist.cpp
+  Juggler.cpp
+  Lucy.cpp
+  Nerd.cpp
+  Turtle.cpp
+  FinalBoss.cpp
   ItemManager.cpp
   User.cpp
   UserManager.cpp
+  World.cpp
   Generating Code...
   ASCII.vcxproj -> C:\Users\sy\Documents\ascii\x64\Debug\ASCII.exe

@@ -9,6 +9,7 @@ ItemManager::ItemManager(Character * user1) {
 	itemlist.push_back("Potion");
 	itemlist.push_back("Mega Potion");
 }
+//Prints out items
 void ItemManager::printItems() {
 	if (itemlist.empty()) {
 		std::cout << "You have no items left. \n";
@@ -19,6 +20,7 @@ void ItemManager::printItems() {
 		std::cout << i + 1 << ". " << itemlist[i] << "   ";
 	}
 }
+//Starting item menu
 void ItemManager::itemMenu() {
 	int number;
 	while (true) {
@@ -68,6 +70,7 @@ void ItemManager::itemMenu() {
 	}
 
 }
+//Character gets an item
 void ItemManager ::getItem(std::string name) {
 	itemlist.push_back(name);
 }
