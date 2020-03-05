@@ -1,26 +1,24 @@
 #pragma once
 #include "Character.h"
+#include "EnemyClasses/Enemy.h"
+#include "EnemyClasses/Cat.h"
+#include "EnemyClasses/Guitarist.h"
+#include "EnemyClasses/Juggler.h"
+#include "EnemyClasses/Lucy.h"
+#include "EnemyClasses/Turtle.h"
+#include "EnemyClasses/Nerd.h"
+#include "BattleSystem.h"
+#include "FinalBoss.h"
+
 
 class World {
-
 public:
-	
+	World();
 
-	World() {
-	}
+	void forward(Character* user1);
+	void gameMenu(Character* user1);
 
-	Character getuser() {
-		for (i = 0; i < usercount; i++) {
-			return userlist[i];
-		}
-	}
-
-
-private:
-	Character userlist[5];
-	int usercount = 0;
-	int i;
 
 };
-	
-	
+
+

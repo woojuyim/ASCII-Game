@@ -148,33 +148,38 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="ASCII.cpp" />
-    <ClCompile Include="Battle.cpp" />
-    <ClCompile Include="Cat.cpp" />
+    <ClCompile Include="BattleSystem.cpp" />
+    <ClCompile Include="EnemyClasses\Cat.cpp" />
     <ClCompile Include="Character.cpp" />
-    <ClCompile Include="Combat.cpp" />
-    <ClCompile Include="Enemy.cpp" />
-    <ClCompile Include="Guitarist.cpp" />
-    <ClCompile Include="Juggler.cpp" />
-    <ClCompile Include="Lucy.cpp" />
-    <ClCompile Include="Math.cpp" />
-    <ClCompile Include="Nerd.cpp" />
+    <ClCompile Include="World.cpp" />
+    <ClCompile Include="EnemyClasses\Enemy.cpp" />
+    <ClCompile Include="EnemyClasses\Guitarist.cpp" />
+    <ClCompile Include="EnemyClasses\Juggler.cpp" />
+    <ClCompile Include="EnemyClasses\Lucy.cpp" />
+    <ClCompile Include="FinalBoss.cpp" />
+    <ClCompile Include="EnemyClasses\Nerd.cpp" />
+    <ClCompile Include="ItemManager.cpp" />
     <ClCompile Include="pch.cpp" />
-    <ClCompile Include="Turtle.cpp" />
+    <ClCompile Include="EnemyClasses\Turtle.cpp" />
+    <ClCompile Include="User.cpp" />
+    <ClCompile Include="UserManager.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Battle.h" />
-    <ClInclude Include="Cat.h" />
+    <ClInclude Include="BattleSystem.h" />
+    <ClInclude Include="EnemyClasses\Cat.h" />
     <ClInclude Include="Character.h" />
-    <ClInclude Include="Combat.h" />
-    <ClInclude Include="Enemy.h" />
-    <ClInclude Include="Guitarist.h" />
-    <ClInclude Include="Juggler.h" />
-    <ClInclude Include="Lucy.h" />
-    <ClInclude Include="Math.h" />
-    <ClInclude Include="Nerd.h" />
-    <ClInclude Include="pch.h" />
-    <ClInclude Include="Turtle.h" />
     <ClInclude Include="World.h" />
+    <ClInclude Include="EnemyClasses\Enemy.h" />
+    <ClInclude Include="EnemyClasses\Guitarist.h" />
+    <ClInclude Include="EnemyClasses\Juggler.h" />
+    <ClInclude Include="EnemyClasses\Lucy.h" />
+    <ClInclude Include="FinalBoss.h" />
+    <ClInclude Include="EnemyClasses\Nerd.h" />
+    <ClInclude Include="User.h" />
+    <ClInclude Include="ItemManager.h" />
+    <ClInclude Include="pch.h" />
+    <ClInclude Include="EnemyClasses\Turtle.h" />
+    <ClInclude Include="UserManager.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

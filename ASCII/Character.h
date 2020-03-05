@@ -4,21 +4,14 @@
 #include <string>
 #include <iostream>
 #include <time.h>
-#include <vector>
-
+//#include "ItemManager.h"
+class ItemManager;
+class Enemy;
 
 class Character {
 public:
 	Character();
 	~Character();
-	int gethealth() { return health; }
-	int getattack() { return attack; }
-	int getdefense() { return defense; }
-	int getspeed() { return speed; }
-	int getexperience() { return experience; }
-	int getlevel() { return level; }
-	int getMiles() { return miles; }
-	bool getgameStatus() { return gameStatus; }
 
 	void gameover();
 	void changeMiles(int _miles);
@@ -27,15 +20,26 @@ public:
 	void changedef(int _defense);
 	void levelup();
 	void takedamage(int damage);
-	void items();
-	void potion();
-	void megapotion();
-	void lucy();
-	void flyingbat();
-	void guitar();
+	void increaseHealth(int num);
+	void items(); 
+	
+	bool isFighting() { return fight; }
+	void setFight(bool maybe);
+
 	void itemget(std::string _item);
 	void status();
-	
+	void saveEnemy(Enemy* enemy);
+
+	int gethealth() { return health; }
+	int getMaxHealth() { return maxhealth; }
+	int getattack() { return attack; }
+	int getdefense() { return defense; }
+	int getspeed() { return speed; }
+	int getexperience() { return experience; }
+	int getlevel() { return level; }
+	int getMiles() { return miles; }
+	Enemy* getEnemy() { return tempenemy; }
+
 private:
 	int health;
 	int maxhealth;
@@ -44,10 +48,10 @@ private:
 	int speed;
 	int experience;
 	int level;
-	std::vector<std::string> itemlist;
-	int itemcount;
+	ItemManager *itemManager;
 	int miles; 
-	bool gameStatus;
+	bool fight;
+	Enemy* tempenemy;
 
 };
 
