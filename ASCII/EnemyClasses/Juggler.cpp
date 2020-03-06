@@ -7,6 +7,7 @@ Juggler::Juggler() {
 	defense = 1;
 	speed = rand() % 4;
 	health = rand() % 2 + 3;
+	magicdefense = 2;
 }
 
 void Juggler::draw() {
@@ -19,17 +20,13 @@ void Juggler::draw() {
 		drawjugman2();
 }
 void Juggler::enemyAction(Character* user1) {
-	std::cout << "It's the Juggler's turn. \n";
+	std::cout << "\nIt's the Juggler's turn. \n";
 	srand((unsigned)time(0));
 	if ((rand() % 100) < 30) {
-		int _damage;
 		srand((unsigned)time(0));
 		if ((rand() % 100) < 50) {
-			_damage = (getattack() - user1->getdefense()) * 2;
-			if (_damage <= 0)
-				_damage = 0;
-			std::cout << "The Juggler threw a knife at you! You lost " << _damage << " HP \n";
-			user1->takedamage(_damage);
+			std::cout << "The Juggler threw a knife at you! \n";
+			user1->takedamage((getattack() - user1->getdefense()) * 2);
 		}
 		else {
 			std::cout << "The Juggler is hoping to win the audition to perform at Lacey's Carnival to impress the kids.";
@@ -37,26 +34,20 @@ void Juggler::enemyAction(Character* user1) {
 	}
 
 	else {
-		int _damage;
-		_damage = getattack() - user1->getdefense();
-		if (_damage <= 0)
-			_damage = 0;
-		std::cout << "The Juggler threw his balls at you! You lost " << _damage << " HP \n";
-		user1->takedamage(_damage);
+		std::cout << "The Juggler threw his balls at you! \n";
+		user1->takedamage(getattack() - user1->getdefense());
 	}
 }
 void Juggler::getAttacked(Character* user1) {
 	std::cout << "You stole his balls and threw them back at him!\n";
 	takedamage(user1->getattack() - getdefense());
-	std::cout << "The Juggler lost " << user1->getattack() - getdefense() << " HP. \n" << std::endl;
 }
 
 void Juggler::getStruck(Character* user1) {
 	srand((unsigned)time(0));
 	if ((rand() % 100) < 30) {
-		int _damage = (user1->getattack() - getdefense()) * 3;
-		takedamage(_damage);
-		std::cout << "You critically hit the Juggler! The Juggler took " << _damage << " damage. \n";
+		std::cout << "You critically hit the Juggler!\n";
+		takedamage((user1->getattack() - getdefense()) * 3);
 	}
 	else {
 		std::cout << "You slipped on one of his balls and missed... \n";

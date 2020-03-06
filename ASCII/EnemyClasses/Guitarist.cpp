@@ -8,6 +8,7 @@ Guitarist :: Guitarist() {
 	speed = 2;
 	health = 7;
 	guitar = true;
+	magicdefense = 10;
 }
 void Guitarist::draw() {
 	std::cout << "  O   \n"
@@ -16,32 +17,24 @@ void Guitarist::draw() {
 		<< " / \\   \n\n";
 }
 void Guitarist::enemyAction(Character* user1) {
-	std::cout << "It's the Hippie Guitarist's turn. \n";
+	std::cout << "\nIt's the Hippie Guitarist's turn. \n";
 	srand((unsigned)time(0));
 	if (guitar == false) {
 		std::cout << "The Hippie Guitarist continued to cry. \n";
 	}
 	else if ((rand() % 100) < 30) {
-		int _damage;
 		srand((unsigned)time(0));
 		std::cout << "The Hippie Guitarist played a funky riff. \n";
 		if ((rand() % 100) < 30) {
-			_damage = (getattack() - user1->getdefense()) * 3;
-			if (_damage <= 0)
-				_damage = 1;
-			std::cout << "You lost all your hearing. You took " << _damage << " HP \n";
-			user1->takedamage(_damage);
-
+			std::cout << "You lost all your hearing. \n";
+			user1->takedamage((getattack() - user1->getdefense()) * 3);
 		}
 		else
 			std::cout << "The melody was actually not too bad??? \n";
 	}
 	else {
-		int _damage = getattack() - user1->getdefense();
-		if (_damage <= 0)
-			_damage = 0;
-		std::cout << "The Hippie Guitarist whacked you on the head with his guitar! You lost " << _damage << " HP \n";
-		user1->takedamage(_damage);
+		std::cout << "The Hippie Guitarist whacked you on the head with his guitar!\n";
+		user1->takedamage(getattack() - user1->getdefense());
 		if ((rand() % 100) < 50) {
 			guitar = false;
 			std::cout << "The guitar broke. The Hippie Guitarist started sobbing due to his lack of soul. \n";
@@ -55,10 +48,8 @@ void Guitarist::getStruck(Character* user1) {
 		std::cout << "His guitar is broken and does no damage... \n";
 	}
 	else if ((rand() % 100) < 30) {
-		int _damage = (user1->getattack() - getdefense()) * 3;
-		takedamage(_damage);
-		std::cout << "The guitarist took " << _damage << " damage! His guitar broke. "
-			<< "The Hippie Guitarist started sobbing due to his lack of soul. \n\n";
+		takedamage((user1->getattack() - getdefense()) * 3);
+		std::cout << "His guitar broke. The Hippie Guitarist started sobbing due to his lack of soul. \n\n";
 		guitar = false;
 	}
 	else {

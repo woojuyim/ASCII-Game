@@ -10,7 +10,7 @@ public:
 	ItemManager(Character *user1);
 	void printItems();
 	void getItem(std::string name);
-	void itemMenu();
+	bool itemMenu();
 
 	void potion();
 	void megapotion();

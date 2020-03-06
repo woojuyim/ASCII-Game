@@ -9,7 +9,7 @@ void World::forward(Character* user1) {
 	BattleSystem system(user1);
 	srand((unsigned int)time(0));
 	//Has more miles, doesn't have an enemy saved, and has more than 0 health
-	while (user1->getMiles() > 1 && !(user1->hasEnemy()) && user1->gethealth() > 0) {
+	while (user1->getMiles() > 0 && !(user1->hasEnemy()) && user1->gethealth() > 0) {
 		user1->changeMiles(-1);
 		std::cout << user1->getMiles() << " miles left. \n";
 		int prob = rand() % 100;
@@ -17,30 +17,30 @@ void World::forward(Character* user1) {
 		if ((rand() % 10) < 3) {
 			if (prob <= 15) {
 				Cat* cat = new Cat();
-				system.fight(cat);
+				system.fight(cat, false);
 			}
 			else if (prob > 15 && prob <= 25) {
 				Lucy *lucy = new Lucy();
-				system.fight(lucy);
+				system.fight(lucy, false);
 				
 			}
 			else if (prob > 25 && prob <= 40) {
 				Turtle* turtle = new Turtle();
-				system.fight(turtle);
+				system.fight(turtle, false);
 
 			}
 			else if (prob > 40 && prob < 60) {
 				Juggler* juggler = new Juggler();
-				system.fight(juggler);
+				system.fight(juggler, false);
 
 			}
 			else if (prob > 60 && prob < 80) {
 				Guitarist *guitarist = new Guitarist();
-				system.fight(guitarist);
+				system.fight(guitarist, false);
 			}
 			else {
 				Nerd* nerd = new Nerd();
-				system.fight(nerd);
+				system.fight(nerd, false);
 			}
 		}
 	}
@@ -49,13 +49,12 @@ void World::forward(Character* user1) {
 //Starting game menu
 void World::gameMenu(Character* user1) {
 	std::string x;
-	std::cout << "Soham Sonthi has been committing unthinkable crimes against humanity! "
-		<< "It is your job to stop him! \n"
-		<< "You need to travel " << user1->getMiles() << " miles to get to him. \n";
+	std::cout << "\nSoham Sonthi has been committing unthinkable crimes against humanity! "
+		<< "It is your job to stop him! You need to travel " << user1->getMiles() << " miles to get to him. \n";
 	if (user1->hasEnemy()) {
 		std::cout << "You were in the middle of a fight! \n";
 		BattleSystem system(user1);
-		system.fight(user1->getEnemy());
+		system.fight(user1->getEnemy(), true);
 	}
 
 	while (user1->getMiles() > 0 && !(user1->hasEnemy())) {

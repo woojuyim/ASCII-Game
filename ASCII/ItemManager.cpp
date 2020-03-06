@@ -21,7 +21,7 @@ void ItemManager::printItems() {
 	}
 }
 //Starting item menu
-void ItemManager::itemMenu() {
+bool ItemManager::itemMenu() {
 	int number;
 	while (true) {
 		if (itemlist.empty()) {
@@ -40,12 +40,10 @@ void ItemManager::itemMenu() {
 			std::cout << "\nWhich one would you like to use? Press the number to use. Press 0 to go back. \n";
 			std::cin >> number;
 		}
-		if (number == 0)
-			break;
-		else if (number < 0 || number >= (int)itemlist.size()) {
-			std::cout << "Please input a valid command. \n";
+		if (number == 0) {
+			return false;
 		}
-		else if (number <= (int)itemlist.size()) {
+		else if (number > 0 && number <= (int)itemlist.size()) {
 			number -= 1;
 			std::cout << "You have used " << itemlist[number] << "\n\n";
 			if (itemlist[number] == "Potion")
@@ -62,12 +60,13 @@ void ItemManager::itemMenu() {
 				throw std::exception("ITEM DOES NOT EXIST");
 			}
 			itemlist.erase(itemlist.begin() + number);
-			break;
+			return true;
 		}
 		else {
 			std::cout << "Please input a valid command. \n";
 		}
 	}
+	return false;
 
 }
 //Character gets an item
@@ -76,16 +75,13 @@ void ItemManager ::getItem(std::string name) {
 }
 
 void ItemManager::potion() {
-	std::cout << "Your health increased by 5. \n";
 	user1->increaseHealth(5);
 }
 void ItemManager::megapotion() {
-	std::cout << "Your health increased by 10. \n";
 	user1->increaseHealth(10);
 }
 void ItemManager::lucy() {
-	std::cout << "Lucy got angry and mortally slapped you. \n"
-		<< "You took 9999 damage. \n";
+	std::cout << "Lucy got angry and mortally slapped you. \n";
 	user1->takedamage(-9999);
 }
 void ItemManager::flyingbat() {
@@ -94,12 +90,11 @@ void ItemManager::flyingbat() {
 void ItemManager::guitar() {
 	srand((unsigned)time(0));
 	if (rand() % 100 < 20) {
-		std::cout << "Somehow you played something good? \n"
-			<< "Your attack and defense increased by 1. \n";
+		std::cout << "Somehow you played something good? \n";
 		user1->changeattack(1);
 		user1->changedef(1);
 	}
 	else {
-		std::cout << "Do you even know how to play guitar?\n";
+		std::cout << "Do you even know how to play guitar? \n";
 	}
 }

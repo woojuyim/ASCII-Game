@@ -1,22 +1,32 @@
 #pragma once
 #include "FinalBoss.h"
 
+FinalBoss::FinalBoss() {
+	goodresponses = { "Professor Sonthi is shocked at your intelligence.\n",
+		"Professor Sonthi shakes his head vigorously! \n",
+		"Professor Sonthi is going to quit his vacation to work on his math problems. \n",
+		"Professor Sonthi is thinking about giving essay questions for his next midterm! \n",
+		"Professor Sonthi believes that math is not his path and decides to teach English. \n" };
+
+	badresponses = { "Professor Sonthi has made the hypothesis that you are quite stupid. \n",
+		"Professor Sonthi congratulates you for being so dumb. \n",
+		"Professor Sonthi congratualates himself for making such great math problems. \n",
+		"Professor Sonthi is going to ask for a raise for his exemplary work on mathematics. \n",
+		"Professor Sonthi thinks vididly about the youth of his day...\n" };
+
+	damageArray = { 10, 5, 4, 3, 100 };
+}
+
 void FinalBoss::fightFinal(Character* user1) {
 	std::cout << "Final Boss time! \n"
 		<< "Michael Sonthi is a former math professor! \n"
 		<< "He gives you the math problems that have been plauging the world!!! \n\n";
 	drawfinalboss();
-	if (math(user1))
-		return;
-	if (math1(user1))
-		return;
-	if (math2(user1))
-		return;
-	if (math3(user1))
-		return;
-	if (finalmath(user1))
-		return;
-	congrats();
+	//Passed
+	if (math(user1)) {
+		congrats();
+		user1->setWon();
+	}
 }
 
 void FinalBoss::drawfinalboss() {
@@ -37,129 +47,54 @@ void FinalBoss::drawfinalboss() {
 }
 
 bool FinalBoss::math(Character* user1) {
+	int turns = 0;
 	int rand1, rand2, answer;
 	double t = clock();
-	std::cout << "You have " << user1->gethealth() << " health points left. \n";
-	srand((unsigned)time(0));
-	rand1 = (rand() % 10) + 1;
-	rand2 = (rand() % 10) + 1;
-	std::cout << "The answer to this question is: " << rand1 << " * " << rand2 << std::endl;
-	std::cin >> answer;
-	if (answer == rand1 * rand2) {
-		std::cout << "Professor Sonthi is shocked at your intelligence. \n";
-		return true;
-	}
-	else {
-		std::cout << "Professor Sonthi has no regrets in life anymore. \n"
-			<< "You take 10 damage. \n" << std::endl;
-		user1->takedamage(10);
-		return 1;
-		if (user1->gethealth() <= 0) {
-			user1->gameover();
-			return false;
+	while (turns < 5) {
+		std::cout << "You have " << user1->gethealth() << " health points left. \n";
+		srand((unsigned)time(0));
+		switch (turns) {
+			case 0:
+				rand1 = (rand() % 10) + 1;
+				rand2 = (rand() % 10) + 1;
+				break;
+			case 1:
+				rand1 = (rand() % 15) + 5;
+				rand2 = (rand() % 15) + 5;
+				break;
+			case 2:
+				rand1 = (rand() % 20) + 10;
+				rand2 = (rand() % 20) + 10;
+				break;
+			case 3:
+				rand1 = (rand() % 35) + 20;
+				rand2 = (rand() % 35) + 20;
+				break;
+			case 4:
+				rand1 = (rand() % 70) + 30;
+				rand2 = (rand() % 70) + 30;
+				break;
 		}
+		std::cout << "The answer to this question is: " << rand1 << " * " << rand2 << std::endl;
+		std::cin >> answer;
+		if (std::cin.fail() || answer != rand1 * rand2) {
+			std::cin.clear();
+			std::cin.ignore(10000, '\n');
+			std::cout << badresponses[turns];
+			user1->takedamage(damageArray[turns]);
+			if (user1->gethealth() <= 0) {
+				user1->gameover();
+				return false;
+			}
+		}
+		else if (answer == rand1 * rand2) {
+			std::cout << goodresponses[turns];
+		}
+		++turns;
 	}
-
+	return true;
 }
 
-bool FinalBoss::math1(Character* user1) {
-	int rand1, rand2, answer;
-	double t = clock();
-	std::cout << "You have " << user1->gethealth() << " health points left. \n";
-	srand((unsigned)time(0));
-	rand1 = (rand() % 15) + 5;
-	rand2 = (rand() % 15) + 5;
-	std::cout << "What is the answer to this question? " << rand1 << " * " << rand2 << std::endl;
-	std::cin >> answer;
-	if (answer == rand1 * rand2) {
-		std::cout << "Professor Sonthi shakes his head vigorously! \n";
-		return true;
-	}
-	else {
-		std::cout << "Professor Sonthi congratulates you for being so dumb. \n"
-			<< "You take 4 damage.\n" << std::endl;
-		user1->takedamage(4);
-		return true;
-		if (user1->gethealth() <= 0) {
-			user1->gameover();
-			return false;
-		}
-	}
-}
-
-bool FinalBoss::math2(Character* user1) {
-	int rand1, rand2, answer;
-	double t = clock();
-	std::cout << "You have " << user1->gethealth() << " health points left. \n";
-	rand1 = (rand() % 20) + 10;
-	rand2 = (rand() % 20) + 10;
-	std::cout << "What is the answer to this question? " << rand1 << " * " << rand2 << std::endl;
-	std::cin >> answer;
-	if (answer == rand1 * rand2) {
-		std::cout << "Professor Sonthi is going to quit his vacation to work on his math problems. \n";
-		return true;
-	}
-	else {
-		std::cout << "Professor Sonthi congratualates himself for making such great math problems. \n"
-			<< "You take 3 damage.\n" << std::endl;
-		user1->takedamage(3);
-		return true;
-		if (user1->gethealth() <= 0) {
-			user1->gameover();
-			return false;
-
-		}
-	}
-}
-
-bool FinalBoss::math3(Character* user1) {
-	int rand1, rand2, answer;
-	double t = clock();
-	std::cout << "You have " << user1->gethealth() << " health points left. \n";
-	rand1 = (rand() % 35) + 20;
-	rand2 = (rand() % 35) + 20;
-	std::cout << "What is the answer to this question? " << rand1 << " * " << rand2 << std::endl;
-	std::cin >> answer;
-	if (answer == rand1 * rand2) {
-		std::cout << "Professor Sonthi is thinking about giving essay questions for his next midterm! \n";
-		return true;
-	}
-	else {
-		std::cout << "Professor Sonthi is going to ask for a raise for his exemplary work on mathematics. \n"
-			<< "You take 2 damage.\n" << std::endl;
-		user1->takedamage(2);
-		return true;
-		if (user1->gethealth() <= 0) {
-			user1->gameover();
-			return false;
-
-		}
-	}
-}
-
-bool FinalBoss::finalmath(Character* user1) {
-	int rand1, rand2, answer;
-	double t = clock();
-	std::cout << "You have " << user1->gethealth() << " health points left. \n";
-	rand1 = (rand() % 70) + 30;
-	rand2 = (rand() % 70) + 30;
-	std::cout << "What is the answer to this question? " << rand1 << " * " << rand2 << std::endl;
-	std::cin >> answer;
-	if (answer == rand1 * rand2) {
-		std::cout << "Professor Sonthi decides to teach a different class...";
-		return true;
-	}
-	else {
-		std::cout << "Professor Sonthi thinks vididly about the youth of his day...\n"
-			<< "You take 100 damage.\n";
-		user1->takedamage(100);
-		return true;
-		if (user1->gethealth() <= 0) {
-			user1->gameover();
-			return false;
-		}
-	}
-}
 
 void FinalBoss::congrats() {
 	std::cout << "Congratulations!!! You have defeated Professor Sonthi and put an end to his evil crimes. " << std::endl

@@ -5,7 +5,7 @@
 class Enemy {
 public:
 	Enemy();
-	virtual ~Enemy() {}
+	virtual ~Enemy();
 
 	//Main attack functions and defense functions
 	virtual void draw() = 0;
@@ -29,6 +29,7 @@ public:
 	int gethealth() { return health; }
 	int getattack() { return attack; }
 	int getdefense() { return defense; }
+	int getmagicdefense() {return magicdefense; }
 	int getspeed() { return speed; }
 	int getlevel() { return level; }
 
@@ -36,6 +37,7 @@ protected:
 	std::string name;
 	int attack;
 	int defense;
+	int magicdefense;
 	int speed;
 	int level;
 	int health;

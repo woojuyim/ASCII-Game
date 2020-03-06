@@ -5,7 +5,7 @@ class BattleSystem {
 public:
 	BattleSystem(Character *user1);
 	~BattleSystem();
-	void fight(Enemy* enemy);
+	void fight(Enemy* enemy, bool Saved);
 	
 private:
 	bool calculateOrder();

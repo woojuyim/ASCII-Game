@@ -2,6 +2,7 @@
 #include "User.h"
 #include "World.h"
 #include <vector>
+#include <algorithm>
 #include <cctype>
 
 class UserManager {
@@ -10,9 +11,14 @@ public:
 	~UserManager();
 	void startMenu();
 	void login();
+	void loginScreen(User* user);
 	void createAccount();
+	void deleteAccount(User* user);
+	void makeCharacter(User* user);
 
 private:
+	void printStart();
+	User* accountExists(std::string& username, std::string& password);
 	void checkallAccounts();
 	bool takenAccount(std::string& username, std::string& password);
 	bool compareString(std::string& one, std::string& two);

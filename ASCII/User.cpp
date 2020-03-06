@@ -3,7 +3,6 @@
 User::User(std::string name, std::string password) {
 	this->name = name;
 	this->password = password;
-	user1 = new Character();
 }
 
 User::~User() {
@@ -11,4 +10,9 @@ User::~User() {
 	user1 = nullptr;
 }
 
-
+void User::createWarrior() {
+	user1 = new Warrior();
+}
+void User::createSorcerer() {
+	user1 = new Sorcerer();
+}

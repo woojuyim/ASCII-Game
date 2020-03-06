@@ -7,33 +7,25 @@ Turtle::Turtle() {
 	defense = rand() % 2 + 2;
 	speed = 10;
 	health = rand() % 4 + 4;
+	magicdefense = 1;
 }
 
 void Turtle::enemyAction(Character* user1) {
-	std::cout << "It's the Crazy Turtle's turn. \n";
+	std::cout << "\nIt's the Crazy Turtle's turn. \n";
+	srand((unsigned)time(0));
 	if ((rand() % 100) < 30) {
-		int _damage;
-		srand((unsigned)time(0));
 		if ((rand() % 100) < 40) {
-			_damage = (getattack() - user1->getdefense()) * 3;
-			if (_damage <= 0)
-				_damage = 0;
-			std::cout << "The Crazy Turtle jumped 10 meters in the air and flattened you! You lost " << _damage << " HP \n\n";
-			user1->takedamage(_damage);
+			std::cout << "The Crazy Turtle jumped 10 meters in the air and flattened you! \n";
+			user1->takedamage((getattack() - user1->getdefense()) * 3);
 		}
 		else {
-			std::cout << "The turtle slowly moved towards you...\n\n";
+			std::cout << "The turtle slowly moved towards you...\n";
 			changeattack(1);
 		}
 	}
-
 	else {
-		int _damage = getattack() - user1->getdefense();
-		if (_damage <= 0)
-			_damage = 0;
-		std::cout << "The Crazy Turtle drove at super speed and rammed in you! You lost " << _damage << " HP \n";
-		user1->takedamage(_damage);
-			
+		std::cout << "The Crazy Turtle drove at super speed and rammed in you! \n";
+		user1->takedamage(getattack() - user1->getdefense());
 	}
 }
 
@@ -41,13 +33,12 @@ void Turtle::enemyAction(Character* user1) {
 void Turtle::getStruck(Character* user1) {
 	std::cout << "You attempted to break open the turtle's shell with your hand! \n";
 	if ((rand() % 100) < 70) {
-		int _damage = (user1->getattack() - getdefense()) * 3;
-		takedamage(_damage);
+		std::cout << "You chopped open the turtle's shell! \n";
+		takedamage((user1->getattack() - getdefense()) * 3);
 		changedef(-2);
-		std::cout << "You chopped open the turtle's shell! The enemy took " << _damage << " damage. The turtle's defense decreased by 2. \n";
 	}
 	else {
-		std::cout << "Your hand wasn't strong enough...You took one damage... \n";
+		std::cout << "Your hand wasn't strong enough...\n";
 		user1->takedamage(1);
 	}
 }

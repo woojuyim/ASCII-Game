@@ -7,32 +7,22 @@ Cat::Cat() {
 	defense = rand() % 2;
 	speed = rand() % 4;
 	health = rand() % 3 + 4;
+	magicdefense = rand() % 2 + 2;
 }
 void Cat::enemyAction(Character* user1) {
-	std::cout << "It's the Black Cat of Death's turn. \n";
+	std::cout << "\nIt's the Black Cat of Death's turn. \n";
 	srand((unsigned)time(0));
 	if ((rand() % 100) < 30) {
-		int _damage;
-		srand((unsigned)time(0));
 		if ((rand() % 100) < 30) {
-			_damage = (getattack() - user1->getdefense()) * 3;
-			if (_damage <= 0)
-				_damage = 1;
-			std::cout << "The Black Cat of Death scratched your face! You lost " << _damage << " HP \n";
-			user1->takedamage(_damage);
-
+			std::cout << "The Black Cat of Death scratched your face! \n";
+			user1->takedamage((getattack() - user1->getdefense()) * 3);
 		}
 		else
 			std::cout << "The Black Cat of Death was overcome with tiredness to move. \n";
 	}
-
 	else {
-		int _damage;
-		_damage = getattack() - user1->getdefense();
-		if (_damage <= 0)
-			_damage = 0;
-		std::cout << "The Black Cat of Death used its powers of die! You lost " << _damage << " HP \n";
-		user1->takedamage(_damage);
+		std::cout << "The Black Cat of Death used its powers of die! \n";
+		user1->takedamage(getattack() - user1->getdefense());
 
 	}
 }
@@ -40,9 +30,8 @@ void Cat::getStruck(Character* user1) {
 	srand((unsigned)time(0));
 	std::cout << "You attempted to beat the Black Cat of Death! \n";
 	if ((rand() % 100) < 30) {
-		int _damage = (user1->getattack() - getdefense()) * 3;
-		takedamage(_damage);
-		std::cout << "Your hit directly hit the Black Cat of Death! It whimpered and meowed softly... It took " << _damage << " damage \n";
+		std::cout << "Your hit directly hit the Black Cat of Death! It whimpered and meowed softly... \n";
+		takedamage((user1->getattack() - getdefense()) * 3);
 	}
 	else {
 		std::cout << "The cat nimbly dodged the attack... \n";

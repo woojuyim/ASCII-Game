@@ -151,6 +151,8 @@
     <ClCompile Include="BattleSystem.cpp" />
     <ClCompile Include="EnemyClasses\Cat.cpp" />
     <ClCompile Include="Character.cpp" />
+    <ClCompile Include="Sorcerer.cpp" />
+    <ClCompile Include="Warrior.cpp" />
     <ClCompile Include="World.cpp" />
     <ClCompile Include="EnemyClasses\Enemy.cpp" />
     <ClCompile Include="EnemyClasses\Guitarist.cpp" />
@@ -168,6 +170,8 @@
     <ClInclude Include="BattleSystem.h" />
     <ClInclude Include="EnemyClasses\Cat.h" />
     <ClInclude Include="Character.h" />
+    <ClInclude Include="Sorcerer.h" />
+    <ClInclude Include="Warrior.h" />
     <ClInclude Include="World.h" />
     <ClInclude Include="EnemyClasses\Enemy.h" />
     <ClInclude Include="EnemyClasses\Guitarist.h" />

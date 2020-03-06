@@ -3,14 +3,16 @@
 
 class FinalBoss {
 public:
+	FinalBoss();
+
 	void fightFinal(Character *user1);
 	void drawfinalboss();
 	bool math(Character* user1);
-	bool math1(Character* user1);
-	bool math2(Character* user1);
-	bool math3(Character* user1);
-	bool finalmath(Character* user1);
 	void congrats();
 
+private:
+	std::vector<std::string> goodresponses;
+	std::vector<std::string> badresponses;
+	std::vector<int> damageArray;
 };
 
