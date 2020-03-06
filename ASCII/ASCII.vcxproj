@@ -170,6 +170,7 @@
     <ClInclude Include="BattleSystem.h" />
     <ClInclude Include="EnemyClasses\Cat.h" />
     <ClInclude Include="Character.h" />
+    <ClInclude Include="Linebreak.h" />
     <ClInclude Include="Sorcerer.h" />
     <ClInclude Include="Warrior.h" />
     <ClInclude Include="World.h" />

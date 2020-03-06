@@ -10,7 +10,7 @@
 #include "BattleSystem.h"
 #include "FinalBoss.h"
 
-
+void linebreak();
 class World {
 public:
 	World();

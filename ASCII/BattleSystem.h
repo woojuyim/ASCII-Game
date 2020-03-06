@@ -1,5 +1,9 @@
 #pragma once
+#ifndef BATTLESYSTEM_H
+#define BATTLESYSTEM_H
 #include "EnemyClasses/Enemy.h"
+
+void linebreak();
 
 class BattleSystem {
 public:
@@ -19,3 +23,5 @@ private:
 	
 
 };
+
+#endif

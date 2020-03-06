@@ -1,6 +1,7 @@
 #pragma once
 #include "FinalBoss.h"
 
+
 FinalBoss::FinalBoss() {
 	goodresponses = { "Professor Sonthi is shocked at your intelligence.\n",
 		"Professor Sonthi shakes his head vigorously! \n",
@@ -18,6 +19,7 @@ FinalBoss::FinalBoss() {
 }
 
 void FinalBoss::fightFinal(Character* user1) {
+	linebreak();
 	std::cout << "Final Boss time! \n"
 		<< "Michael Sonthi is a former math professor! \n"
 		<< "He gives you the math problems that have been plauging the world!!! \n\n";
@@ -91,6 +93,7 @@ bool FinalBoss::math(Character* user1) {
 			std::cout << goodresponses[turns];
 		}
 		++turns;
+		linebreak();
 	}
 	return true;
 }

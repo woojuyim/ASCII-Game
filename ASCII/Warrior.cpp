@@ -1,6 +1,7 @@
 #include "Warrior.h"
 
 
+
 Warrior::Warrior() {
 	attack = 3;
 	magic = 1;
@@ -29,15 +30,16 @@ void Warrior::greentea(Enemy* enemy) {
 	enemy->takedamage(1);
 }
 void Warrior::levelup() {
+	std::cout << "\nYou gained a level up! \n";
 	srand((unsigned)time(0));
 	int c = rand() % 3 + 1;
 	experience -= 10;
-	attack += rand() % 2 + 1;
-	magic += 1;
-	defense += rand() % 2;
-	speed += rand() % 2;
-	health += c;
-	maxhealth += c;
+	changeattack(rand() % 2 + 1);
+	changemagic(1);
+	changedef(rand() % 2);
+	changespeed(rand() % 2);
+	changeMaxHealth(c);
+	increaseHealth(c);
 	++level;
 	/*if (level == 2) {
 		std::cout << "You learned Math! \n";

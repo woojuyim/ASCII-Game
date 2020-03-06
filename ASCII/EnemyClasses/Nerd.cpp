@@ -12,7 +12,7 @@ Nerd::Nerd() {
 	rage = false;
 }
 void Nerd::enemyAction(Character* user1) {
-	std::cout << "\nIt's the The Modern Day Nerd's turn. \n";
+	std::cout << "It's the The Modern Day Nerd's turn. \n";
 	srand((unsigned)time(0));
 	if (rage) {
 		std::cout << "The enraged Modern Day Nerd hits you on the head with his wood katana. \n";

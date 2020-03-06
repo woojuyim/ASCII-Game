@@ -10,7 +10,7 @@ Cat::Cat() {
 	magicdefense = rand() % 2 + 2;
 }
 void Cat::enemyAction(Character* user1) {
-	std::cout << "\nIt's the Black Cat of Death's turn. \n";
+	std::cout << "It's the Black Cat of Death's turn. \n";
 	srand((unsigned)time(0));
 	if ((rand() % 100) < 30) {
 		if ((rand() % 100) < 30) {

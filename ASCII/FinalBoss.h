@@ -1,6 +1,8 @@
 #pragma once
 #include "Character.h"
 
+void linebreak();
+
 class FinalBoss {
 public:
 	FinalBoss();

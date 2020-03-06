@@ -1,9 +1,12 @@
 #pragma once
+#ifndef USERMANAGER_H
+#define USERMANAGER_H
+
 #include "User.h"
 #include "World.h"
 #include <vector>
-#include <algorithm>
-#include <cctype>
+
+void linebreak();
 
 class UserManager {
 public:
@@ -13,7 +16,7 @@ public:
 	void login();
 	void loginScreen(User* user);
 	void createAccount();
-	void deleteAccount(User* user);
+	bool deleteAccount(User* user);
 	void makeCharacter(User* user);
 
 private:
@@ -31,3 +34,4 @@ private:
 };
 	
 	
+#endif

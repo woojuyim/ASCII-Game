@@ -1,6 +1,8 @@
+#include "Linebreak.h"
 #include "Character.h"
 #include "ItemManager.h"
 #include "EnemyClasses/Enemy.h"
+
 
 Character :: Character() {
 	attack = 1;
@@ -38,7 +40,15 @@ void Character ::changeattack(int _attack) {
 	else if (_attack < 0) {
 		std::cout << "Attack decreased by " << -_attack << std::endl;
 	}
-	attack += _attack;	attack += _attack;
+	attack += _attack;
+}
+void Character::changemagic(int _magic) {
+	if (_magic > 0)
+		std::cout << "Magic increased by " << _magic << std::endl;
+	else if (_magic < 0) {
+		std::cout << "Magic decreased by " << -_magic << std::endl;
+	}
+	magic += _magic;
 }
 void Character::changedef(int _defense) {
 	if (_defense > 0)
@@ -61,10 +71,11 @@ void Character::levelup() {
 	int c = rand() % 4 + 1;
 	experience -= 10;
 	changeattack(rand() % 3);
+	changemagic(2);
 	changedef(rand() % 3);
 	changespeed(rand() % 3);
-	increaseHealth(c);
 	changeMaxHealth(c);
+	increaseHealth(c);
 	++level;
 }
 void Character::takedamage(int damage) {
@@ -73,7 +84,7 @@ void Character::takedamage(int damage) {
 	std::cout << "You took " << damage << " damage. ";
 	health -= damage;
 	if (gethealth() > 0)
-		std::cout << "You have " << gethealth() << " HP left. \n\n";
+		std::cout << "You have " << gethealth() << " HP left. \n";
 	else
 		health = 0;
 }
@@ -87,9 +98,9 @@ void Character::increaseHealth(int num) {
 }
 void Character::changeMaxHealth(int _maxhealth) {
 	if (_maxhealth > 0)
-		std::cout << "Max Health increased by " + _maxhealth << std::endl;
+		std::cout << "Max Health increased by " << _maxhealth << std::endl;
 	else if (_maxhealth < 0) {
-		std::cout << "Max Health decreased by " + -_maxhealth << std::endl;
+		std::cout << "Max Health decreased by " << -_maxhealth << std::endl;
 	}
 	maxhealth += _maxhealth;
 }
@@ -115,6 +126,7 @@ void Character::printAbilities() {
 
 bool Character::specialAttack(Enemy* enemy) {
 	while (true) {
+		linebreak();
 		std::cout << "Select an ability. Press the number to use. Press 0 to go back. \n";
 		printAbilities();
 		int input;
@@ -142,6 +154,7 @@ bool Character::specialAttack(Enemy* enemy) {
 }
 
 void Character :: status() {
+	linebreak();
 	std::cout << "Class: " << className << std::endl
 		<< "Current level: " << level << std::endl
 		<< "Max health: " << maxhealth << std::endl

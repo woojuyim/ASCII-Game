@@ -3,6 +3,7 @@
 #include <vector>
 #include <string>
 
+void linebreak();
 class Character;
 
 class ItemManager {

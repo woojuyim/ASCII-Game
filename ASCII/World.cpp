@@ -49,7 +49,9 @@ void World::forward(Character* user1) {
 //Starting game menu
 void World::gameMenu(Character* user1) {
 	std::string x;
-	std::cout << "\nSoham Sonthi has been committing unthinkable crimes against humanity! "
+	bool quit = false;
+	linebreak();
+	std::cout << "Soham Sonthi has been committing unthinkable crimes against humanity! \n"
 		<< "It is your job to stop him! You need to travel " << user1->getMiles() << " miles to get to him. \n";
 	if (user1->hasEnemy()) {
 		std::cout << "You were in the middle of a fight! \n";
@@ -63,8 +65,7 @@ void World::gameMenu(Character* user1) {
 			return;
 		}
 		std::cout << "You have " << user1->getMiles() << " miles left, \n"
-			<< "Press 1 to go forward, 2 to open item menu, 3 to open status menu. "
-			<< "Press 9 to skip to final boss. \n";
+			<< "1. Forward     2. Item     3. Status     9. Final Boss     0. Quit \n";
 		std::cin >> x;
 		if (x == "1" || x == "forward") {
 			forward(user1);
@@ -82,10 +83,14 @@ void World::gameMenu(Character* user1) {
 		else if (x == "9" || x == "skip") {
 			break;
 		}
+		else if (x == "0") {
+			quit = true;
+			break;
+		}
 		else
 			std::cout << "Please input a valid command. \n";
 	}
-	if (!(user1->hasEnemy())) {
+	if (!(user1->hasEnemy()) && !quit) {
 		FinalBoss fb;
 		fb.fightFinal(user1);
 	}

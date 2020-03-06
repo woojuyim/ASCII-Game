@@ -122,5 +122,8 @@
     <ClInclude Include="Sorcerer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Linebreak.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

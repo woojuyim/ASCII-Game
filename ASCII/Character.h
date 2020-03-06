@@ -22,6 +22,7 @@ public:
 	void changeMiles(int _miles);
 	void increaseexp(int _experience);
 	void changeattack(int _attack);
+	void changemagic(int _magic);
 	void changedef(int _defense);
 	void changespeed(int _speed);
 	void takedamage(int damage);

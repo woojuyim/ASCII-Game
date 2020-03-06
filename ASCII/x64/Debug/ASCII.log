@@ -1,2 +1,6 @@
 ﻿  BattleSystem.cpp
+  Character.cpp
+  ItemManager.cpp
+  UserManager.cpp
+  Generating Code...
   ASCII.vcxproj -> C:\Users\sy\Documents\ascii\x64\Debug\ASCII.exe

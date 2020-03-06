@@ -12,7 +12,7 @@ Lucy::Lucy() {
 	bool attract = false;
 }
 void Lucy::enemyAction(Character* user1) {
-	std::cout << "\nIt's Lucy's turn. \n";
+	std::cout << "It's Lucy's turn. \n";
 	srand((unsigned)time(0));
 	int random = rand() % 100;
 	if (random < 20) {

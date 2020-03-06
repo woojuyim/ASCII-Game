@@ -11,7 +11,7 @@ Turtle::Turtle() {
 }
 
 void Turtle::enemyAction(Character* user1) {
-	std::cout << "\nIt's the Crazy Turtle's turn. \n";
+	std::cout << "It's the Crazy Turtle's turn. \n";
 	srand((unsigned)time(0));
 	if ((rand() % 100) < 30) {
 		if ((rand() % 100) < 40) {

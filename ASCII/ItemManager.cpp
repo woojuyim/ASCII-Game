@@ -1,6 +1,7 @@
 #include "ItemManager.h"
 #include "Character.h"
 
+
 ItemManager::ItemManager(Character * user1) {
 	this->user1 = user1;
 
@@ -11,6 +12,7 @@ ItemManager::ItemManager(Character * user1) {
 }
 //Prints out items
 void ItemManager::printItems() {
+	linebreak();
 	if (itemlist.empty()) {
 		std::cout << "You have no items left. \n";
 		return;
@@ -45,7 +47,7 @@ bool ItemManager::itemMenu() {
 		}
 		else if (number > 0 && number <= (int)itemlist.size()) {
 			number -= 1;
-			std::cout << "You have used " << itemlist[number] << "\n\n";
+			std::cout << "You used the " << itemlist[number] << "\n";
 			if (itemlist[number] == "Potion")
 				potion();
 			else if (itemlist[number] == "Mega Potion")

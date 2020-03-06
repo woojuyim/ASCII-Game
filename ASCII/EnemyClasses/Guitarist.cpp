@@ -17,7 +17,7 @@ void Guitarist::draw() {
 		<< " / \\   \n\n";
 }
 void Guitarist::enemyAction(Character* user1) {
-	std::cout << "\nIt's the Hippie Guitarist's turn. \n";
+	std::cout << "It's the Hippie Guitarist's turn. \n";
 	srand((unsigned)time(0));
 	if (guitar == false) {
 		std::cout << "The Hippie Guitarist continued to cry. \n";

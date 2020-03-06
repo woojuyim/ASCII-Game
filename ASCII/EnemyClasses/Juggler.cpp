@@ -20,7 +20,7 @@ void Juggler::draw() {
 		drawjugman2();
 }
 void Juggler::enemyAction(Character* user1) {
-	std::cout << "\nIt's the Juggler's turn. \n";
+	std::cout << "It's the Juggler's turn. \n";
 	srand((unsigned)time(0));
 	if ((rand() % 100) < 30) {
 		srand((unsigned)time(0));

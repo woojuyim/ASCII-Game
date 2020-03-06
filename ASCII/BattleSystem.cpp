@@ -1,5 +1,6 @@
 #include "BattleSystem.h"
 
+
 BattleSystem::BattleSystem(Character* user1) {
 	this->user1 = user1;
 	enemy = nullptr;
@@ -17,29 +18,29 @@ void BattleSystem::run() {
 	//User > Enemy Level
 	if (user1->getlevel() > enemy->getlevel()) {
 		if (rand() % 100 < 70) {
-			std::cout << "You have successfully ran away. \n\n";
+			std::cout << "You have successfully ran away. \n";
 			battle = false;
 		}
 		else
-			std::cout << "You have failed at running away. \n\n";
+			std::cout << "You have failed at running away. \n";
 	}
 	//Enemy level > User level
 	else if (user1->getlevel() < enemy->getlevel()) {
 		if (rand() % 100 < 30) {
-			std::cout << "You have successfully ran away. \n\n";
+			std::cout << "You have successfully ran away. \n";
 			battle = false;
 		}
 		else
-			std::cout << "You have failed at running away. \n\n";
+			std::cout << "You have failed at running away. \n";
 	}
 	//Equal Levels
 	else {
 		if (rand() % 100 < 50) {
-			std::cout << "You have successfully ran away. \n\n";
+			std::cout << "You have successfully ran away. \n";
 			battle = false;
 		}
 		else
-			std::cout << "You have failed at running away. \n\n";
+			std::cout << "You have failed at running away. \n";
 	}
 }
 
@@ -48,7 +49,8 @@ void BattleSystem::fight(Enemy * enemy, bool Saved) {
 	std::string input, input2;
 	srand((unsigned)time(0));
 	battle = true;
-	std::cout << "\nYou got into a battle!\n"
+	linebreak();
+	std::cout << "You got into a battle!\n"
 		<< "It's the " + enemy->getName() + "! \n";
 	enemy->draw();
 	userTurn = true;
@@ -63,6 +65,7 @@ void BattleSystem::fight(Enemy * enemy, bool Saved) {
 	while (battle) {
 		//User Turn
 		while (userTurn) {
+			linebreak();
 			std::cout << "Your turn! What would you like to do?\n";
 			std::cout << "1. Fight     2. Item     3. Status     4. Run     5. Save and Quit \n";
 			std::cin >> input;
@@ -125,14 +128,16 @@ void BattleSystem::fight(Enemy * enemy, bool Saved) {
 			enemy->itemChance(user1);
 			delete enemy;
 			enemy = nullptr;
+			linebreak();
 			break;
 		}
 		//Successfully ran away or saved
 		if (battle == false)
 			break;
+		linebreak();
 		enemy->enemyAction(user1);
 		userTurn = true;
-		
+
 		if (user1->gethealth() <= 0) {
 			delete enemy;
 			enemy = nullptr;
@@ -175,7 +180,7 @@ void BattleSystem::gainExperience() {
 	}
 	//Levelup
 	if (user1->getexperience() >= 10) {
+		linebreak();
 		user1->levelup();
-		user1->status();
 	}
 }

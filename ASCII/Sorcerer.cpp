@@ -1,6 +1,7 @@
 #include "Sorcerer.h"
 #include "EnemyClasses/Enemy.h"
 
+
 Sorcerer::Sorcerer() {
 	attack = 2;
 	magic = 3;
@@ -39,15 +40,16 @@ void Sorcerer::mathAbility(Enemy* enemy) {
 }
 
 void Sorcerer::levelup() {
+	std::cout << "\nYou gained a level up! \n";
 	srand((unsigned)time(0));
 	int c = rand() % 2 + 1;
 	experience -= 10;
-	attack += 1;
-	magic += rand() % 2 + 1;
-	defense += rand() % 2;
-	speed += rand() % 2;
-	health += c;
-	maxhealth += c;
+	changeattack(1);
+	changemagic(rand() % 2 + 1);
+	changedef(rand() % 2);
+	changespeed(rand() % 2 + 1);
+	changeMaxHealth(c);
+	increaseHealth(c);
 	++level;
 	if (level == 2) {
 		std::cout << "You learned Math! \n";
