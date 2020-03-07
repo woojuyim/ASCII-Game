@@ -18,6 +18,7 @@ public:
 	void createAccount();
 	bool deleteAccount(User* user);
 	void makeCharacter(User* user);
+	void loadingscreen(User* user);
 
 private:
 	void printStart();
@@ -29,8 +30,6 @@ private:
 	World *w;
 	std::vector<User*> userList;
 	bool program;
-	
-
 };
 	
 	

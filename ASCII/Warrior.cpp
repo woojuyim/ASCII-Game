@@ -1,7 +1,5 @@
 #include "Warrior.h"
 
-
-
 Warrior::Warrior() {
 	attack = 3;
 	magic = 1;
@@ -10,6 +8,54 @@ Warrior::Warrior() {
 	className = "Warrior";
 	abilities.push_back("Green Tea");
 }
+Warrior::Warrior(const Warrior* rhs) {
+	attack = rhs->attack;
+	magic = rhs->magic;
+	defense = rhs->defense;
+	speed = rhs->speed;
+	health = rhs->health;
+	level = rhs->level;
+	maxhealth = rhs->maxhealth;
+	experience = rhs->experience;
+	itemManager = new ItemManager(this);
+	for (int i = 0; i < rhs->itemManager->getItemSize(); ++i) {
+		itemManager->getitemList().push_back(rhs->itemManager->getitemList()[i]);
+	}
+	for (int i = 0; i < rhs->abilities.size(); ++i) {
+		abilities.push_back(rhs->abilities[i]);
+	}
+	miles = rhs->miles;
+	isFighting = rhs->isFighting;
+	won = rhs->won;
+	className = rhs->className;
+	tempenemy = nullptr;
+}
+Warrior& Warrior ::operator= (const Warrior* rhs) {
+	if (this != rhs) {
+		attack = rhs->attack;
+		magic = rhs->magic;
+		defense = rhs->defense;
+		speed = rhs->speed;
+		health = rhs->health;
+		level = rhs->level;
+		maxhealth = rhs->maxhealth;
+		experience = rhs->experience;
+		itemManager = new ItemManager(this);
+		for (int i = 0; i < rhs->itemManager->getItemSize(); ++i) {
+			itemManager->getitemList()[i] = rhs->itemManager->getitemList()[i];
+		}
+		for (int i = 0; i < rhs->abilities.size(); ++i) {
+			abilities.push_back(rhs->abilities[i]);
+		}
+		miles = rhs->miles;
+		isFighting = rhs->isFighting;
+		won = rhs->won;
+		className = rhs->className;
+		tempenemy = nullptr;
+	}
+	return *this;
+}
+
 
 void Warrior::specialAttack(Enemy* enemy) {
 }

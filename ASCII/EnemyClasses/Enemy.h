@@ -6,6 +6,9 @@ class Enemy {
 public:
 	Enemy();
 	virtual ~Enemy();
+	Enemy(const Enemy* other);
+	Enemy& operator=(const Enemy* other);
+
 
 	//Main attack functions and defense functions
 	virtual void draw() = 0;

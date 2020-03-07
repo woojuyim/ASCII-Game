@@ -9,15 +9,16 @@
 #include "EnemyClasses/Nerd.h"
 #include "BattleSystem.h"
 #include "FinalBoss.h"
+#include "User.h"
 
 void linebreak();
 class World {
 public:
 	World();
 
-	void forward(Character* user1);
+	void forward(Character* user1, User* user);
 
-	void gameMenu(Character* user1);
+	void gameMenu(Character* user1, User* user);
 
 private: 
 	bool finalboss;

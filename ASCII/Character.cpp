@@ -20,9 +20,15 @@ Character :: Character() {
 	won = false;
 	className = "ERROR";
 }
+
 Character :: ~Character() {
 	delete itemManager;
 	itemManager = nullptr;
+	if (tempenemy != nullptr) {
+		delete tempenemy;
+		tempenemy = nullptr;
+
+	}
 }
 void Character::setWon() {
 	won = true;
@@ -115,8 +121,10 @@ void Character::setFight(bool maybe) {
 	isFighting = maybe;
 }
 void Character::saveEnemy(Enemy* enemy) {
-	tempenemy = enemy;
-	setFight(true);
+	if (tempenemy != enemy) {
+		tempenemy = enemy;
+		setFight(true);
+	}
 }
 void Character::printAbilities() {
 	for (size_t i = 0; i < abilities.size(); ++i) {
@@ -154,7 +162,6 @@ bool Character::specialAttack(Enemy* enemy) {
 }
 
 void Character :: status() {
-	linebreak();
 	std::cout << "Class: " << className << std::endl
 		<< "Current level: " << level << std::endl
 		<< "Max health: " << maxhealth << std::endl

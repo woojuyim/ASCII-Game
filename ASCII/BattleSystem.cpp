@@ -20,27 +20,33 @@ void BattleSystem::run() {
 		if (rand() % 100 < 70) {
 			std::cout << "You have successfully ran away. \n";
 			battle = false;
+			linebreak();
 		}
-		else
+		else {
 			std::cout << "You have failed at running away. \n";
+		}
 	}
 	//Enemy level > User level
 	else if (user1->getlevel() < enemy->getlevel()) {
 		if (rand() % 100 < 30) {
 			std::cout << "You have successfully ran away. \n";
 			battle = false;
+			linebreak();
 		}
-		else
+		else {
 			std::cout << "You have failed at running away. \n";
+		}
 	}
 	//Equal Levels
 	else {
 		if (rand() % 100 < 50) {
 			std::cout << "You have successfully ran away. \n";
 			battle = false;
+			linebreak();
 		}
-		else
+		else {
 			std::cout << "You have failed at running away. \n";
+		}
 	}
 }
 

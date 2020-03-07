@@ -96,14 +96,60 @@ void UserManager::loginScreen(User* user) {
 				if (input == "yes") {
 					delete user->getCharacter();
 					makeCharacter(user);
-					w->gameMenu(user->getCharacter());
+					w->gameMenu(user->getCharacter(), user);
 				}
 				else {
 					std::cout << "I guess not playing the game isn't that bad... maybe? \n";
 				}
 			}
 			else {
-				w->gameMenu(user->getCharacter());
+				while (true) {
+					std::cout << "What would you like to do? \n"
+						<< "1. Play     2. Load Manual Save State     3. Load Auto Save State     4. Return \n";
+					std::cin >> input;
+					if (input == "1") {
+						w->gameMenu(user->getCharacter(), user);
+					}
+					else if (input == "2") {
+						if (user->isManSaved()) {
+							std::cout << "MANUALLY SAVED CHARACTER STATUS. \n";
+							user->getManual()->status();
+							std::cout << "Would you like to continue? Type yes. \n";
+							std::cin >> input;
+							if (input == "yes") {
+								user->overwriteCharacter(true);
+								w->gameMenu(user->getCharacter(), user);
+								break;
+							}
+						}
+						else{
+							std::cout << "There is no manual save state \n";
+						}
+					}
+					else if (input == "3") {
+						if (user->isAutoSaved()) {
+							std::cout << "AUTO SAVED CHARACTER STATUS. \n";
+							user->getAuto()->status();
+							std::cout << "Would you like to continue? Type yes. \n";
+							std::cin >> input;
+							if (input == "yes") {
+								user->overwriteCharacter(false);
+								w->gameMenu(user->getCharacter(), user);
+								break;
+							}
+						}
+						else {
+								std::cout << "There is no auto save state. \n";
+						}
+						
+					}
+					else if (input == "4") {
+						break;
+					}
+					else {
+						std::cout << "Please input a valid number. \n";
+					}
+				}	
 			}
 		}
 		else if (input == "2") {
@@ -122,6 +168,10 @@ void UserManager::loginScreen(User* user) {
 		}
 	}
 }
+void UserManager::loadingscreen(User* user) {
+
+}
+
 //Login to existing account
 void UserManager::login() {
 	std::string username, password;

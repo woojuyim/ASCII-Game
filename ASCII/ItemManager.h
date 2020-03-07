@@ -13,6 +13,9 @@ public:
 	void getItem(std::string name);
 	bool itemMenu();
 
+	int getItemSize() { return (int)itemlist.size(); }
+	std::vector<std::string> getitemList() { return itemlist; }
+
 	void potion();
 	void megapotion();
 	void lucy();

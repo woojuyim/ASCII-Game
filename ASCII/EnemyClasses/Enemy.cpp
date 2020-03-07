@@ -1,10 +1,36 @@
 #include "Enemy.h"
 
 Enemy::Enemy() {
-
+	attack = 1;
+	defense = 1;
+	speed = 1;
+	magicdefense = 1;
+	health = 1;
+	level = 1;
 }
 Enemy::~Enemy() {
 	
+}
+Enemy::Enemy(const Enemy* other) {
+	name = other->name;
+	attack = other->attack;
+	defense = other->defense;
+	magicdefense = other->magicdefense;
+	speed = other->speed;
+	level = other->level;
+	health = other->health;
+}
+Enemy& Enemy:: operator=(const Enemy* other) {
+	if (this != other) {
+		name = other->name;
+		attack = other->attack;
+		defense = other->defense;
+		magicdefense = other->magicdefense;
+		speed = other->speed;
+		level = other->level;
+		health = other->health;
+	}
+	return *this;
 }
 void Enemy :: setmonster(int _level, int _attack, int _defense, int _speed, int _health) {
 	level = _level;
