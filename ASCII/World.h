@@ -17,11 +17,9 @@ public:
 	World();
 
 	void forward(Character* user1, User* user);
-
 	void gameMenu(Character* user1, User* user);
 
 private: 
-	bool finalboss;
 
 };
 

@@ -9,13 +9,17 @@ class Character;
 class ItemManager {
 public:
 	ItemManager(Character *user1);
+	
+	//Item menus
+	bool itemMenu();
 	void printItems();
 	void getItem(std::string name);
-	bool itemMenu();
 
+	//Getters
 	int getItemSize() { return (int)itemlist.size(); }
 	std::vector<std::string> getitemList() { return itemlist; }
 
+	//Items
 	void potion();
 	void megapotion();
 	void lucy();

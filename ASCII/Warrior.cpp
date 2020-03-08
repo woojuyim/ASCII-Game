@@ -1,10 +1,11 @@
 #include "Warrior.h"
 
 Warrior::Warrior() {
-	attack = 3;
-	magic = 1;
+	attack = 6;
+	magic = 2;
 	defense = 2;
-	speed = 2;
+	speed = 4;
+	health = 22;
 	className = "Warrior";
 	abilities.push_back("Green Tea");
 }
@@ -62,6 +63,7 @@ void Warrior::specialAttack(Enemy* enemy) {
 
 void Warrior::subclassSpecial(Enemy* enemy, std::string& ability) {
 	std::cout << "You used " << ability << "\n";
+	std::this_thread::sleep_for(std::chrono::milliseconds(500));
 	if (ability == "Green Tea") {
 		greentea(enemy);
 	}
@@ -71,21 +73,22 @@ void Warrior::subclassSpecial(Enemy* enemy, std::string& ability) {
 }
 
 void Warrior::greentea(Enemy* enemy) {
-	std::cout << "You threw Green Tea at the " + enemy->getName()
-		<< ". It only caused some first degree burns... \n";
-	enemy->takedamage(1);
+	std::cout << "You threw Green Tea at the " + enemy->getName();
+	std::this_thread::sleep_for(std::chrono::milliseconds(500));
+	std::cout << ". It only caused some first degree burns... \n";
+	enemy->takedamage(2);
 }
 void Warrior::levelup() {
 	std::cout << "\nYou gained a level up! \n";
 	srand((unsigned)time(0));
-	int c = rand() % 3 + 1;
+	int c = rand() % 2 + 2;
 	experience -= 10;
-	changeattack(rand() % 2 + 1);
+	changeattack(rand() % 3 + 1);
 	changemagic(1);
 	changedef(rand() % 2);
 	changespeed(rand() % 2);
 	changeMaxHealth(c);
-	increaseHealth(c);
+	health = maxhealth;
 	++level;
 	/*if (level == 2) {
 		std::cout << "You learned Math! \n";

@@ -9,6 +9,8 @@
 class ItemManager;
 class Enemy;
 
+void sleep();
+
 class Character {
 public:
 	Character();

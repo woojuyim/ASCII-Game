@@ -1,8 +1,9 @@
 #pragma once
 #include "FinalBoss.h"
+#include <chrono>
+using namespace std::chrono;
 
-
-FinalBoss::FinalBoss() {
+FinalBoss::FinalBoss(Character * user1) {
 	goodresponses = { "Professor Sonthi is shocked at your intelligence.\n",
 		"Professor Sonthi shakes his head vigorously! \n",
 		"Professor Sonthi is going to quit his vacation to work on his math problems. \n",
@@ -16,19 +17,37 @@ FinalBoss::FinalBoss() {
 		"Professor Sonthi thinks vididly about the youth of his day...\n" };
 
 	damageArray = { 10, 5, 4, 3, 100 };
+	this->user1 = user1;
 }
 
-void FinalBoss::fightFinal(Character* user1) {
+void FinalBoss::fightFinal() {
 	linebreak();
-	std::cout << "Final Boss time! \n"
-		<< "Michael Sonthi is a former math professor! \n"
-		<< "He gives you the math problems that have been plauging the world!!! \n\n";
+	std::cout << "Final Boss time! \n";
+	sleep();
+	std::cout << "Michael Sonthi is a former math professor! \n";
+	sleep();
+	std::cout << "He gives you the math problems that have been plauging the world!!! \n\n";
+	sleep();
 	drawfinalboss();
 	//Passed
-	if (math(user1)) {
+	if (math()) {
 		congrats();
 		user1->setWon();
 	}
+}
+void FinalBoss:: timer() {
+	auto start = high_resolution_clock::now();
+	seconds duration;
+	int index = 1;
+	while (index <= 5) {
+		auto end = high_resolution_clock::now();
+		duration = duration_cast<seconds>(end - start);
+		if (duration == seconds(index)) {
+			std::cout << index << " ";
+			++index;
+		}
+	}
+	std::cout << std::endl;
 }
 
 void FinalBoss::drawfinalboss() {
@@ -48,11 +67,11 @@ void FinalBoss::drawfinalboss() {
 		<< "		     (__)(__) \n\n";
 }
 
-bool FinalBoss::math(Character* user1) {
+bool FinalBoss::math() {
 	int turns = 0;
 	int rand1, rand2, answer;
-	double t = clock();
 	while (turns < 5) {
+		sleep();
 		std::cout << "You have " << user1->gethealth() << " health points left. \n";
 		srand((unsigned)time(0));
 		switch (turns) {
@@ -77,11 +96,16 @@ bool FinalBoss::math(Character* user1) {
 				rand2 = (rand() % 70) + 30;
 				break;
 		}
-		std::cout << "The answer to this question is: " << rand1 << " * " << rand2 << std::endl;
+		auto start = high_resolution_clock::now();
+		std::cout << "The answer to this question is: " << rand1 << " * " << rand2 << std::endl
+			<< "There is a 5 second time limit... \n";
 		std::cin >> answer;
-		if (std::cin.fail() || answer != rand1 * rand2) {
+		auto end = high_resolution_clock::now();
+		auto duration = duration_cast<seconds>(end - start);
+		if (std::cin.fail() || answer != rand1 * rand2 || duration >= seconds(5)) {
 			std::cin.clear();
 			std::cin.ignore(10000, '\n');
+			sleep();
 			std::cout << badresponses[turns];
 			user1->takedamage(damageArray[turns]);
 			if (user1->gethealth() <= 0) {
@@ -90,10 +114,12 @@ bool FinalBoss::math(Character* user1) {
 			}
 		}
 		else if (answer == rand1 * rand2) {
+			sleep();
 			std::cout << goodresponses[turns];
 		}
 		++turns;
 		linebreak();
+		
 	}
 	return true;
 }

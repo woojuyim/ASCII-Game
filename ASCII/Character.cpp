@@ -2,6 +2,9 @@
 #include "Character.h"
 #include "ItemManager.h"
 #include "EnemyClasses/Enemy.h"
+#include <chrono>
+#include <thread>
+
 
 
 Character :: Character() {
@@ -24,11 +27,6 @@ Character :: Character() {
 Character :: ~Character() {
 	delete itemManager;
 	itemManager = nullptr;
-	if (tempenemy != nullptr) {
-		delete tempenemy;
-		tempenemy = nullptr;
-
-	}
 }
 void Character::setWon() {
 	won = true;
@@ -37,10 +35,12 @@ void Character::changeMiles(int _miles) {
 	miles += _miles;
 }
 void Character :: increaseexp(int _experience) {
+	sleep();
 	std::cout << "You gained " << _experience << " experience points. \n";
 	experience += _experience;
 }
 void Character ::changeattack(int _attack) {
+	sleep();
 	if (_attack > 0)
 		std::cout << "Attack increased by " << _attack << std::endl;
 	else if (_attack < 0) {
@@ -49,6 +49,7 @@ void Character ::changeattack(int _attack) {
 	attack += _attack;
 }
 void Character::changemagic(int _magic) {
+	sleep();
 	if (_magic > 0)
 		std::cout << "Magic increased by " << _magic << std::endl;
 	else if (_magic < 0) {
@@ -57,6 +58,7 @@ void Character::changemagic(int _magic) {
 	magic += _magic;
 }
 void Character::changedef(int _defense) {
+	sleep();
 	if (_defense > 0)
 		std::cout << "Defense increased by " << _defense << std::endl;
 	else if (_defense < 0)
@@ -64,6 +66,7 @@ void Character::changedef(int _defense) {
 	defense += _defense;
 }
 void Character::changespeed(int _speed) {
+	sleep();
 	if (_speed > 0)
 		std::cout << "Speed increased by " << _speed << std::endl;
 	else if (_speed < 0) {
@@ -72,6 +75,7 @@ void Character::changespeed(int _speed) {
 	speed += _speed;
 }
 void Character::levelup() {
+	sleep();
 	std::cout << "You gained a level up! \n";
 	srand((unsigned)time(0));
 	int c = rand() % 4 + 1;
@@ -81,20 +85,23 @@ void Character::levelup() {
 	changedef(rand() % 3);
 	changespeed(rand() % 3);
 	changeMaxHealth(c);
-	increaseHealth(c);
+	health = maxhealth;
 	++level;
 }
 void Character::takedamage(int damage) {
+	sleep();
 	if (damage < 0)
 		damage = 0;
 	std::cout << "You took " << damage << " damage. ";
 	health -= damage;
-	if (gethealth() > 0)
+	if (gethealth() > 0) {
 		std::cout << "You have " << gethealth() << " HP left. \n";
+	}
 	else
 		health = 0;
 }
 void Character::increaseHealth(int num) {
+	sleep();
 	std::cout << "Health increased by " << num << std::endl;
 	health += num;
 	if (health > maxhealth) {
@@ -103,6 +110,7 @@ void Character::increaseHealth(int num) {
 	}
 }
 void Character::changeMaxHealth(int _maxhealth) {
+	sleep();
 	if (_maxhealth > 0)
 		std::cout << "Max Health increased by " << _maxhealth << std::endl;
 	else if (_maxhealth < 0) {
@@ -162,6 +170,7 @@ bool Character::specialAttack(Enemy* enemy) {
 }
 
 void Character :: status() {
+	sleep();
 	std::cout << "Class: " << className << std::endl
 		<< "Current level: " << level << std::endl
 		<< "Max health: " << maxhealth << std::endl
@@ -186,7 +195,7 @@ void Character :: status() {
 }
 
 void Character:: gameover() {
-	
+	sleep();
 	std::cout << "You have been defeated... \n\n";
 	std::cout << " ________    _____      _____  ___________        ____________   _________________________   " << std::endl
 		<< " /  _____/   /  _  \\    /     \\ \\_   _____/       \\_____  \\   \\ /   /\\_   _____/\\______   \\ " << std::endl

@@ -4,6 +4,7 @@
 #include "EnemyClasses/Enemy.h"
 
 void linebreak();
+void sleep();
 
 class BattleSystem {
 public:

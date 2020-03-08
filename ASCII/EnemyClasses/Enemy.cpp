@@ -40,12 +40,14 @@ void Enemy :: setmonster(int _level, int _attack, int _defense, int _speed, int 
 	health = _health;
 }
 void Enemy:: takedamage(int damage) {
+	sleep();
 	if (damage < 0)
 		damage = 0;
 	std::cout << getName() + " took " << damage << " damage. \n";
 	health -= damage;
 }
 void Enemy:: changedef(int _defense) {
+	sleep();
 	if (_defense > 0)
 		std::cout << getName() << "'s defense increased by " << _defense << std::endl;
 	else if (_defense < 0) 
@@ -53,6 +55,7 @@ void Enemy:: changedef(int _defense) {
 	defense += _defense;
 }
 void Enemy:: changeattack(int _attack) {
+	sleep();
 	if (_attack > 0)
 		std::cout << getName() << "'s attack increased by " << _attack << std::endl;
 	else if (_attack < 0) 
@@ -60,12 +63,22 @@ void Enemy:: changeattack(int _attack) {
 	attack += _attack;
 }
 void Enemy:: changespeed(int _speed) {
+	sleep();
 	if (_speed > 0)
 		std::cout << getName() << "'s speed increased by " << _speed << std::endl;
 	else if (_speed < 0) 
 		std::cout << getName() << "'s speed decreased by " << -_speed << std::endl;
 	speed += _speed;
 }
+void Enemy::changemagicdef(int _magicdef) {
+	sleep();
+	if (_magicdef > 0)
+		std::cout << getName() << "'s magic defense increased by " << _magicdef << std::endl;
+	else if (_magicdef < 0)
+		std::cout << getName() << "'s magic defense decreased by " << -_magicdef << std::endl;
+	magicdefense += _magicdef;
+}
+
 void Enemy:: enemystatus() {
 	std::cout << "Current level is " << level << std::endl
 		<< "Health remaining is " << health << std::endl
@@ -75,6 +88,7 @@ void Enemy:: enemystatus() {
 }
 
 void Enemy:: getAttacked(Character* user1) {
+	sleep();
 	std::cout << "You attacked the " + getName() << std::endl;
 	takedamage(user1->getattack() - getdefense());
 }

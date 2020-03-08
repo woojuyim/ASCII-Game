@@ -3,15 +3,21 @@
 Turtle::Turtle() {
 	name = "Crazy Turtle";
 	level = 2;
-	attack = rand() % 1 + 1;
-	defense = rand() % 2 + 2;
-	speed = 10;
-	health = rand() % 4 + 4;
-	magicdefense = 1;
+	// 4 - 7
+	attack = rand() % 3 + 4;
+	// 7 - 9 
+	defense = rand() % 2 + 7;
+	// 0
+	speed = 0;
+	// 10 - 12
+	health = rand() % 3 + 10;
+	// 7 - 9
+	magicdefense = rand() % 2 + 7;
 }
 
 void Turtle::enemyAction(Character* user1) {
 	std::cout << "It's the Crazy Turtle's turn. \n";
+	sleep();
 	srand((unsigned)time(0));
 	if ((rand() % 100) < 30) {
 		if ((rand() % 100) < 40) {
@@ -28,14 +34,21 @@ void Turtle::enemyAction(Character* user1) {
 		user1->takedamage(getattack() - user1->getdefense());
 	}
 }
-
+void Turtle::getAttacked(Character* user1) {
+	std::cout << "You attacked the " + getName() << std::endl;
+	takedamage(user1->getattack() - getdefense());
+	sleep();
+	std::cout << "Maybe there's a way to lower its defenses... \n";
+}
 
 void Turtle::getStruck(Character* user1) {
 	std::cout << "You attempted to break open the turtle's shell with your hand! \n";
+	sleep();
 	if ((rand() % 100) < 70) {
 		std::cout << "You chopped open the turtle's shell! \n";
 		takedamage((user1->getattack() - getdefense()) * 3);
-		changedef(-2);
+		changedef(-5);
+		changemagicdef(-5);
 	}
 	else {
 		std::cout << "Your hand wasn't strong enough...\n";

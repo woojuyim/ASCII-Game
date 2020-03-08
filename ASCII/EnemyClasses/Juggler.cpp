@@ -2,12 +2,17 @@
 
 Juggler::Juggler() {
 	name = "Juggler";
-	level = 1;
-	attack = rand() % 3 + 1;
-	defense = 1;
-	speed = rand() % 4;
-	health = rand() % 2 + 3;
-	magicdefense = 2;
+	level = 2;
+	// 5 - 7
+	attack = rand() % 3 + 5;
+	// 1 - 2
+	defense =  rand() % 3 + 2;
+	// 5 - 7
+	speed = rand() % 3 + 5;
+	// 7 - 10
+	health = rand() % 3 + 7;
+	// 0 - 2
+	magicdefense = rand() % 2;
 }
 
 void Juggler::draw() {
@@ -21,10 +26,11 @@ void Juggler::draw() {
 }
 void Juggler::enemyAction(Character* user1) {
 	std::cout << "It's the Juggler's turn. \n";
+	sleep();
 	srand((unsigned)time(0));
 	if ((rand() % 100) < 30) {
 		srand((unsigned)time(0));
-		if ((rand() % 100) < 50) {
+		if ((rand() % 100) < 40) {
 			std::cout << "The Juggler threw a knife at you! \n";
 			user1->takedamage((getattack() - user1->getdefense()) * 2);
 		}
@@ -39,18 +45,21 @@ void Juggler::enemyAction(Character* user1) {
 	}
 }
 void Juggler::getAttacked(Character* user1) {
+	sleep();
 	std::cout << "You stole his balls and threw them back at him!\n";
 	takedamage(user1->getattack() - getdefense());
 }
 
 void Juggler::getStruck(Character* user1) {
 	srand((unsigned)time(0));
+	std::cout << "You tried juggling four balls in front of him! \n";
+	sleep();
 	if ((rand() % 100) < 30) {
-		std::cout << "You critically hit the Juggler!\n";
+		std::cout << "The Juggler was shocked at your ball handling skills! \n";
 		takedamage((user1->getattack() - getdefense()) * 3);
 	}
 	else {
-		std::cout << "You slipped on one of his balls and missed... \n";
+		std::cout << "You slipped on one of his balls and failed... \n";
 	}
 }
 void Juggler::itemChance(Character* user1) {

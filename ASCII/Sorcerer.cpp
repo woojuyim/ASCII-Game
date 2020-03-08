@@ -3,11 +3,11 @@
 
 
 Sorcerer::Sorcerer() {
-	attack = 2;
-	magic = 3;
+	attack = 5;
+	magic = 4;
 	defense = 2;
-	speed = 4;
-	health = 23;
+	speed = 6;
+	health = 24;
 	className = "Sorcerer";
 	abilities.push_back("Physics Homework");
 }
@@ -61,6 +61,7 @@ Sorcerer& Sorcerer ::operator= (const Sorcerer* rhs) {
 
 void Sorcerer::subclassSpecial(Enemy* enemy, std::string& ability) {
 	std::cout << "You used " << ability << "\n";
+	sleep();
 	if (ability == "Physics Homework") {
 		physicshw(enemy);
 	}
@@ -72,16 +73,18 @@ void Sorcerer::subclassSpecial(Enemy* enemy, std::string& ability) {
 	}
 }
 void Sorcerer::physicshw(Enemy* enemy) {
-	std::cout << "You threw your physics homework at the " + enemy->getName() << std::endl
-		<< "Hundreds of papers hit " + enemy->getName() + " on the head. \n";
+	std::cout << "You threw your physics homework at the " + enemy->getName() << std::endl;
+	sleep();
+	std::cout << "Hundreds of papers hit " + enemy->getName() + " on the head. \n";
 	int damage = (getmagic() - enemy->getmagicdefense()) * 2;
 	enemy->takedamage(damage);
 }
 
 
 void Sorcerer::mathAbility(Enemy* enemy) {
-	std::cout << "You showed the " + enemy->getName() + " how to solve 1 + 1! \n"
-		<< "The " + enemy->getName() + " was enlightened! \n";
+	std::cout << "You showed the " + enemy->getName() + " how to solve 1 + 1! \n";
+	sleep();
+	std::cout << "The " + enemy->getName() + " was enlightened! \n";
 	int damage = (getmagic() - enemy->getmagicdefense()) * 3;
 	enemy->takedamage(damage);
 }
@@ -89,14 +92,14 @@ void Sorcerer::mathAbility(Enemy* enemy) {
 void Sorcerer::levelup() {
 	std::cout << "\nYou gained a level up! \n";
 	srand((unsigned)time(0));
-	int c = rand() % 2 + 1;
+	int c = rand() % 3 + 1;
 	experience -= 10;
-	changeattack(1);
+	changeattack(rand() % 3);
 	changemagic(rand() % 2 + 1);
 	changedef(rand() % 2);
-	changespeed(rand() % 2 + 1);
+	changespeed(rand() % 3);
 	changeMaxHealth(c);
-	increaseHealth(c);
+	health = maxhealth;
 	++level;
 	if (level == 2) {
 		std::cout << "You learned Math! \n";

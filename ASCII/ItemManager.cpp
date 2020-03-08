@@ -1,6 +1,7 @@
 #include "ItemManager.h"
 #include "Character.h"
-
+#include <chrono>
+#include <thread>
 
 ItemManager::ItemManager(Character * user1) {
 	this->user1 = user1;
@@ -48,6 +49,7 @@ bool ItemManager::itemMenu() {
 		else if (number > 0 && number <= (int)itemlist.size()) {
 			number -= 1;
 			std::cout << "You used the " << itemlist[number] << "\n";
+			sleep();
 			if (itemlist[number] == "Potion")
 				potion();
 			else if (itemlist[number] == "Mega Potion")
@@ -83,8 +85,8 @@ void ItemManager::megapotion() {
 	user1->increaseHealth(10);
 }
 void ItemManager::lucy() {
-	std::cout << "Lucy got angry and mortally slapped you. \n";
-	user1->takedamage(-9999);
+	std::cout << "Lucy got angry and slapped you. \n";
+	user1->takedamage(-10);
 }
 void ItemManager::flyingbat() {
 	std::cout << "The bat flew around the area and gave you encouragement! \n";

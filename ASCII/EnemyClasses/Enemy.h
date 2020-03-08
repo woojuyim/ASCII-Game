@@ -1,5 +1,9 @@
 #pragma once
 #include "../Character.h"
+#include <chrono>
+#include <thread>
+
+void sleep();
 
 //Abstract Enemy class
 class Enemy {
@@ -8,7 +12,6 @@ public:
 	virtual ~Enemy();
 	Enemy(const Enemy* other);
 	Enemy& operator=(const Enemy* other);
-
 
 	//Main attack functions and defense functions
 	virtual void draw() = 0;
@@ -22,6 +25,7 @@ public:
 	void changedef(int _defense);
 	void changeattack(int _attack);
 	void changespeed(int _speed);
+	void changemagicdef(int _magicdef);
 	void enemystatus();
 
 	//Testing purposes

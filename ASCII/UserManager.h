@@ -12,13 +12,28 @@ class UserManager {
 public:
 	UserManager();
 	~UserManager();
+
+	//Start
 	void startMenu();
+
+	//Login
 	void login();
 	void loginScreen(User* user);
+
+	//Save or Load Screen
+	void loadingscreen(User* user);
+	void restart(User* user);
+	void loadManualSave(User* user);
+	void loadAutoSave(User* user);
+
+
+
+	//Account Management
 	void createAccount();
 	bool deleteAccount(User* user);
+
+	//Make Character
 	void makeCharacter(User* user);
-	void loadingscreen(User* user);
 
 private:
 	void printStart();

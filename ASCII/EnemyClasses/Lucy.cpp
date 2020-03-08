@@ -1,19 +1,24 @@
 #include "Lucy.h"
 
-using namespace std;
 Lucy::Lucy() {
 	name = "Lucy";
-	level = 4;
-	attack = rand() % 5 + 1;
-	defense = rand() % 2;
-	speed = 10;
-	health = rand() % 4 + 6;
-	magicdefense = 0;
+	level = 3;
+	// 6 - 7
+	attack = rand() % 3 + 6;
+	// 2 - 3
+	defense = rand() % 2 + 2;
+	// 2 - 8 
+	speed = rand () % 6 + 2;
+	// 12 - 16
+	health = rand() % 4 + 12;
+	// 0 - 2
+	magicdefense = rand() % 3;
 	bool attract = false;
 }
 void Lucy::enemyAction(Character* user1) {
 	std::cout << "It's Lucy's turn. \n";
 	srand((unsigned)time(0));
+	sleep();
 	int random = rand() % 100;
 	if (random < 20) {
 		std::cout << "Lucy critically stabbed you!\n";
@@ -29,29 +34,33 @@ void Lucy::enemyAction(Character* user1) {
 	}
 }
 void Lucy::getStruck(Character* user1) {
+	std::cout << "You tried to slap Lucy! \n";
+	sleep();
 	srand((unsigned)time(0));
 	int r = (rand() % 10);
-	if (attract && r < 5) {
+	if (attract == true && r < 5) {
 		std::cout << "You were overcome with love to Lucy! \n";
+		return;
 	}
-	else if ((rand() % 100) < 30) {
-		std::cout << "You critically slapped Lucy! \n";
+	if (r < 4) {
+		std::cout << "You critically hit her! \n";
 		takedamage((user1->getattack() - getdefense()) * 3);
 	}
 	else {
-		std::cout << "You were too lovestruck by Lucy... \n";
+		std::cout << "You couldn't bring yourself to slap her... \n";
 	}
 
 }
 void Lucy::itemChance(Character* user1) {
-	int chance = rand() % 101;
-	if (chance > 30) {
+	int chance = rand() % 100;
+	if (chance <= 20) {
 		user1->itemget("Lucy");
 		std::cout << "You captured Lucy! Just... she might be a bit volatile... \n";
 	}
 }
 void Lucy::getAttacked(Character* user1) {
 	int r = (rand() % 10);
+	sleep();
 	if (attract && r < 5) {
 		std::cout << "You were overcome with love to Lucy! \n";
 	}
@@ -61,9 +70,9 @@ void Lucy::getAttacked(Character* user1) {
 	}
 }
 void Lucy::draw() {
-	cout << "    ,-,  " << endl
-		<< "   (('')) " << endl
-		<< "  __/  \\__ " << endl
-		<< "   /____\\ " << endl
-		<< "    _| \\_" << endl << endl;
+	std::cout << "    ,-,  " << std::endl
+		<< "   (('')) " << std::endl
+		<< "  __/  \\__ " << std::endl
+		<< "   /____\\ " << std::endl
+		<< "    _| \\_" << std::endl << std::endl;
 }

@@ -8,10 +8,7 @@ BattleSystem::BattleSystem(Character* user1) {
 	userTurn = true;
 }
 BattleSystem::~BattleSystem() {
-	/*if (enemy != nullptr) {
-		delete enemy;
-		enemy = nullptr;
-	}*/
+ 
 }
 void BattleSystem::run() {
 	srand((unsigned)time(0));
@@ -20,6 +17,9 @@ void BattleSystem::run() {
 		if (rand() % 100 < 70) {
 			std::cout << "You have successfully ran away. \n";
 			battle = false;
+			delete enemy;
+			enemy = nullptr;
+			user1->setFight(false);
 			linebreak();
 		}
 		else {
@@ -31,6 +31,9 @@ void BattleSystem::run() {
 		if (rand() % 100 < 30) {
 			std::cout << "You have successfully ran away. \n";
 			battle = false;
+			delete enemy;
+			enemy = nullptr;
+			user1->setFight(false);
 			linebreak();
 		}
 		else {
@@ -42,6 +45,9 @@ void BattleSystem::run() {
 		if (rand() % 100 < 50) {
 			std::cout << "You have successfully ran away. \n";
 			battle = false;
+			delete enemy;
+			enemy = nullptr;
+			user1->setFight(false);
 			linebreak();
 		}
 		else {
@@ -56,13 +62,17 @@ void BattleSystem::fight(Enemy * enemy, bool Saved) {
 	srand((unsigned)time(0));
 	battle = true;
 	linebreak();
-	std::cout << "You got into a battle!\n"
-		<< "It's the " + enemy->getName() + "! \n";
+	std::cout << "You got into a battle!\n";
+	sleep();
+	std::cout << "It's the " + enemy->getName() + "! \n";
+	sleep();
 	enemy->draw();
 	userTurn = true;
 	if(!Saved){
-		std::cout << "The " + enemy->getName() + " is level " << enemy->getlevel() << std::endl
-			<< "Calculating turn order... \n";
+		std::cout << "The " + enemy->getName() + " is level " << enemy->getlevel() << std::endl;
+		sleep();
+		std::cout << "Calculating turn order... \n";
+		sleep();
 		if (calculateOrder())
 			userTurn = true;
 		else
@@ -77,13 +87,13 @@ void BattleSystem::fight(Enemy * enemy, bool Saved) {
 			std::cin >> input;
 			if (input == "fight" || input == "Fight" || input == "1") {
 				while (userTurn) {
-					std::cout << "1. Attack     2. Strike     3. Special     4. Back\n";
+					std::cout << "1. Attack     2. Interact     3. Special     4. Back\n";
 					std::cin >> input2;
 					if (input2 == "attack" || input2 == "Attack" || input2 == "1") {
 						enemy->getAttacked(user1);
 						userTurn = false;
 					}
-					else if (input2 == "strike" || input2 == "Strike" || input2 == "2") {
+					else if (input2 == "interact" || input2 == "Interact" || input2 == "2") {
 						enemy->getStruck(user1);
 						userTurn = false;
 					}
@@ -126,8 +136,9 @@ void BattleSystem::fight(Enemy * enemy, bool Saved) {
 		}
 		
 		//If Enemy is defeated
-		if (enemy->gethealth() <= 0) {
+		if (enemy->gethealth() <= 0 && battle == true) {
 			battle = false;
+			sleep();
 			std::cout << "You have defeated the " + enemy->getName() + "! ";
 			user1->setFight(false);
 			gainExperience();
@@ -145,6 +156,7 @@ void BattleSystem::fight(Enemy * enemy, bool Saved) {
 		userTurn = true;
 
 		if (user1->gethealth() <= 0) {
+			user1->setFight(false);
 			delete enemy;
 			enemy = nullptr;
 			battle = false;
@@ -163,7 +175,7 @@ bool BattleSystem::calculateOrder() {
 	//Same Speed
 	else {
 		//Random
-		if ((rand() % 2) == 0)
+		if (rand() % 2 == 0)
 			return true;
 		else
 			return false;
@@ -172,16 +184,34 @@ bool BattleSystem::calculateOrder() {
 
 void BattleSystem::gainExperience() {
 	int leveldiff = user1->getlevel() - enemy->getlevel();
-	if (abs(leveldiff) <= 2) {
-		int _experience = rand() % (leveldiff + 9) + 1;
+	//Enemy is same level
+	if (leveldiff == 0) {
+		// 3, 4, 5
+		int _experience = rand() % 3 + 3;
 		user1->increaseexp(_experience);
 	}
-	else if (leveldiff >= 3) {
-		int _experience = (rand() % 9) + 1;
+	//Enemy one level lower
+	else if (leveldiff == 1) {
+		// 2, 3
+		int _experience = rand() % 2 + 2;
 		user1->increaseexp(_experience);
 	}
-	else if (leveldiff <= -3) {
-		int _experience = rand() % abs((leveldiff * 2) + 1);
+	//Enemy at least two level lower
+	else if (leveldiff >= 2) {
+		// 1, 2
+		int _experience = rand() % 2 + 1;
+		user1->increaseexp(_experience);
+	}
+	//Enemy one level higher
+	else if (leveldiff == -1) {
+		// 4, 5
+		int _experience = rand() % 2 + 4;
+		user1->increaseexp(_experience);
+	}
+	//Enemy at least two level higher
+	else if (leveldiff <= -2) {
+		// 5, 6
+		int _experience = rand() % 3 + 4;
 		user1->increaseexp(_experience);
 	}
 	//Levelup

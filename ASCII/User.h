@@ -7,20 +7,22 @@ class User {
 public:
 	User(std::string name, std::string password);
 	~User();
-	std::string getName() { return name; }
-	std::string getPassword() { return password; }
-	Character* getCharacter() { return user1; }
-
+	
+	//Create Characters
 	void createWarrior();
 	void createSorcerer();
 	void saveState();
 	void autoSave();
+	void overwriteCharacter(bool manual);
+
+	//Getters
+	std::string getName() { return name; }
+	std::string getPassword() { return password; }
+	Character* getCharacter() { return user1; }
 	bool isManSaved() { return hasManualSave; }
 	bool isAutoSaved() { return hasAutoSave; }
 	Character* getManual() { return manuallySaved; }
 	Character* getAuto() { return autoSaved; }
-	void overwriteCharacter(bool manual);
-
 
 private:
 	std::string name;

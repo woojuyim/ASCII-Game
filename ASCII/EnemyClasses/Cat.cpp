@@ -2,15 +2,21 @@
 
 Cat::Cat() {
 	name = "Black Cat of Death";
-	level = 2;
-	attack = rand() % 2 + 1;
-	defense = rand() % 2;
-	speed = rand() % 4;
-	health = rand() % 3 + 4;
-	magicdefense = rand() % 2 + 2;
+	level = 1;
+	// 4 - 6
+	attack = rand() % 3 + 4;
+	// 1 - 4
+	defense = rand() % 4 + 1;
+	// 0 - 9
+	speed = rand() % 10;
+	// 9 - 11
+	health = rand() % 3 + 9;
+	// 1 - 4
+	magicdefense = rand() % 3 + 1;
 }
 void Cat::enemyAction(Character* user1) {
 	std::cout << "It's the Black Cat of Death's turn. \n";
+	sleep();
 	srand((unsigned)time(0));
 	if ((rand() % 100) < 30) {
 		if ((rand() % 100) < 30) {
@@ -29,8 +35,9 @@ void Cat::enemyAction(Character* user1) {
 void Cat::getStruck(Character* user1) {
 	srand((unsigned)time(0));
 	std::cout << "You attempted to beat the Black Cat of Death! \n";
+	sleep();
 	if ((rand() % 100) < 30) {
-		std::cout << "Your hit directly hit the Black Cat of Death! It whimpered and meowed softly... \n";
+		std::cout << "You directly hit the Black Cat of Death! It whimpered and meowed softly... \n";
 		takedamage((user1->getattack() - getdefense()) * 3);
 	}
 	else {

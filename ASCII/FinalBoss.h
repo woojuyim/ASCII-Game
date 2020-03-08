@@ -5,16 +5,19 @@ void linebreak();
 
 class FinalBoss {
 public:
-	FinalBoss();
+	FinalBoss(Character* user1);
 
-	void fightFinal(Character *user1);
+	void timer();
+	void fightFinal();
 	void drawfinalboss();
-	bool math(Character* user1);
+	bool math();
 	void congrats();
 
 private:
 	std::vector<std::string> goodresponses;
 	std::vector<std::string> badresponses;
 	std::vector<int> damageArray;
+
+	Character* user1;
 };
 
