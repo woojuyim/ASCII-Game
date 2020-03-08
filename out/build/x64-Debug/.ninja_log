@@ -1,0 +1,20 @@
+# ninja log v5
+14	1175	605401240	CMakeFiles/ascii.dir/src/FinalBoss.cpp.obj	9f103a5b525a7dc5
+11	1193	605401240	CMakeFiles/ascii.dir/src/Enemy.cpp.obj	9641192926e3d11c
+4	1246	605401241	CMakeFiles/ascii.dir/src/ASCII.cpp.obj	76d7960e9076d143
+18	1263	605401241	CMakeFiles/ascii.dir/src/Cat.cpp.obj	e563f20cf2a3ddcc
+7	1443	605401241	CMakeFiles/ascii.dir/src/Character.cpp.obj	310a13f0c9c6341c
+0	1561	605401241	CMakeFiles/ascii.dir/src/BattleSystem.cpp.obj	73c0babd59db4c35
+1193	2465	605401242	CMakeFiles/ascii.dir/src/Guitarist.cpp.obj	90a8a22b5d8436fd
+1175	2500	605401242	CMakeFiles/ascii.dir/src/Nerd.cpp.obj	50457f8feec5dc60
+1247	2581	605401242	CMakeFiles/ascii.dir/src/Lucy.cpp.obj	fe0db5ae49f929e2
+1264	2640	605401242	CMakeFiles/ascii.dir/src/ItemManager.cpp.obj	c7deb629b20c964b
+1443	2860	605401242	CMakeFiles/ascii.dir/src/Juggler.cpp.obj	55bed375793a358f
+1561	3098	605401242	CMakeFiles/ascii.dir/src/Sorcerer.cpp.obj	e6c02496d4910795
+3098	3228	605401243	CMakeFiles/ascii.dir/src/pch.cpp.obj	715a94f8d7554f82
+2581	3677	605401243	CMakeFiles/ascii.dir/src/User.cpp.obj	b14a40c6f02cf263
+2466	3729	605401243	CMakeFiles/ascii.dir/src/Turtle.cpp.obj	716b6a7d05ccffae
+2500	3866	605401243	CMakeFiles/ascii.dir/src/World.cpp.obj	9ed24710c539d5f2
+2640	3949	605401243	CMakeFiles/ascii.dir/src/Warrior.cpp.obj	3b844a7e783b618
+2860	4142	605401243	CMakeFiles/ascii.dir/src/UserManager.cpp.obj	637d9741feb9881a
+4143	4597	605401244	ascii.exe	ad23c7f4a1402160
