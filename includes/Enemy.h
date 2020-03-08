@@ -26,6 +26,8 @@ public:
 	void changeattack(int _attack);
 	void changespeed(int _speed);
 	void changemagicdef(int _magicdef);
+
+	//Status
 	void enemystatus();
 
 	//Testing purposes

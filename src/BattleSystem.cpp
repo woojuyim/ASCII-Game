@@ -1,6 +1,5 @@
 #include "BattleSystem.h"
 
-
 BattleSystem::BattleSystem(Character* user1) {
 	this->user1 = user1;
 	enemy = nullptr;
@@ -68,6 +67,7 @@ void BattleSystem::fight(Enemy * enemy, bool Saved) {
 	sleep();
 	enemy->draw();
 	userTurn = true;
+	//Calculating turn order if not saved enemy
 	if(!Saved){
 		std::cout << "The " + enemy->getName() + " is level " << enemy->getlevel() << std::endl;
 		sleep();

@@ -1,6 +1,5 @@
-#include "Character.h"
 #include "ItemManager.h"
-#include <vector>
+#include "Enemy.h"
 
 class Sorcerer : public Character{
 public:
@@ -8,17 +7,16 @@ public:
 	Sorcerer(const Sorcerer* rhs);
 	Sorcerer& operator=(const Sorcerer* rhs);
 
+	//Levelup
 	void levelup() override;
 
 	//Special Attacks
-	void specialAttack(Enemy* enemy) {}
 	void subclassSpecial(Enemy* enemy, std::string& ability);
 
 	//Abilities
 	void physicshw(Enemy* enemy);
 	void mathAbility(Enemy* enemy);
 
-	
 private:
 
 };

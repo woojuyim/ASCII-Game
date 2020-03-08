@@ -27,6 +27,8 @@ void Turtle::enemyAction(Character* user1) {
 		else {
 			std::cout << "The turtle slowly moved towards you...\n";
 			changeattack(1);
+			changedef(1);
+			changemagicdef(1);
 		}
 	}
 	else {
@@ -44,7 +46,7 @@ void Turtle::getAttacked(Character* user1) {
 void Turtle::getStruck(Character* user1) {
 	std::cout << "You attempted to break open the turtle's shell with your hand! \n";
 	sleep();
-	if ((rand() % 100) < 70) {
+	if ((rand() % 100) < 80) {
 		std::cout << "You chopped open the turtle's shell! \n";
 		takedamage((user1->getattack() - getdefense()) * 3);
 		changedef(-5);

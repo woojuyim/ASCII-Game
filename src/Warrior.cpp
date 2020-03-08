@@ -58,14 +58,14 @@ Warrior& Warrior ::operator= (const Warrior* rhs) {
 }
 
 
-void Warrior::specialAttack(Enemy* enemy) {
-}
-
 void Warrior::subclassSpecial(Enemy* enemy, std::string& ability) {
 	std::cout << "You used " << ability << "\n";
-	std::this_thread::sleep_for(std::chrono::milliseconds(500));
+	sleep();
 	if (ability == "Green Tea") {
 		greentea(enemy);
+	}
+	else if (ability == "Guava Tea") {
+		guavatea(enemy);
 	}
 	else {
 		throw std::exception("ITEM DOES NOT EXIST");
@@ -73,10 +73,19 @@ void Warrior::subclassSpecial(Enemy* enemy, std::string& ability) {
 }
 
 void Warrior::greentea(Enemy* enemy) {
-	std::cout << "You threw Green Tea at the " + enemy->getName();
-	std::this_thread::sleep_for(std::chrono::milliseconds(500));
-	std::cout << ". It only caused some first degree burns... \n";
+	std::cout << "You threw Green Tea at the " + enemy->getName() << std::endl;
+	sleep();
+	std::cout << "It only caused some first degree burns... \n";
+	enemy->takedamage(1);
+}
+void Warrior::guavatea(Enemy* enemy) {
+	std::cout << "You threw Guava Tea at the " + enemy->getName() << std::endl;
+	sleep();
+	std::cout << "It was better than the Green Tea, but not by much... \n";
+	sleep();
+	std::cout << "It only caused some second degree burns... \n";
 	enemy->takedamage(2);
+
 }
 void Warrior::levelup() {
 	std::cout << "\nYou gained a level up! \n";
@@ -90,8 +99,8 @@ void Warrior::levelup() {
 	changeMaxHealth(c);
 	health = maxhealth;
 	++level;
-	/*if (level == 2) {
-		std::cout << "You learned Math! \n";
-		abilities.push_back("Math");
-	}*/
+	if (level == 2) {
+		std::cout << "You learned Guava Tea! \n";
+		abilities.push_back("Guava Tea");
+	}
 }

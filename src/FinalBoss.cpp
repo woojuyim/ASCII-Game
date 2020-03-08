@@ -35,20 +35,6 @@ void FinalBoss::fightFinal() {
 		user1->setWon();
 	}
 }
-void FinalBoss:: timer() {
-	auto start = high_resolution_clock::now();
-	seconds duration;
-	int index = 1;
-	while (index <= 5) {
-		auto end = high_resolution_clock::now();
-		duration = duration_cast<seconds>(end - start);
-		if (duration == seconds(index)) {
-			std::cout << index << " ";
-			++index;
-		}
-	}
-	std::cout << std::endl;
-}
 
 void FinalBoss::drawfinalboss() {
 	std::cout << "		 ________________________________ \n"

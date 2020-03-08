@@ -11,8 +11,12 @@ public:
 	//Create Characters
 	void createWarrior();
 	void createSorcerer();
+
+	//Create manual savestate
 	void saveState();
+	//Create auto savestate
 	void autoSave();
+	//Overwrite savestate with current save
 	void overwriteCharacter(bool manual);
 
 	//Getters

@@ -28,6 +28,9 @@ void Lucy::enemyAction(Character* user1) {
 		std::cout << "Lucy used her charm on you. You may not be able to move. \n";
 		attract = true;
 	}
+	else if (random >= 20 && random < 40) {
+		std::cout << "Lucy is glaring into your eyes \n";
+	}
 	else {
 		std::cout << "Lucy slapped you! \n";
 		user1->takedamage(getattack() - user1->getdefense());

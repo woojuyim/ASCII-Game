@@ -5,8 +5,6 @@
 #include <chrono>
 #include <thread>
 
-
-
 Character :: Character() {
 	attack = 1;
 	magic = 1;

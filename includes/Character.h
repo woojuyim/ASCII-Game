@@ -1,6 +1,4 @@
 #pragma once
-#ifndef CHARACTER_H
-#define CHARACTER_H
 #include <string>
 #include <iostream>
 #include <time.h>
@@ -30,8 +28,10 @@ public:
 	void takedamage(int damage);
 	void increaseHealth(int num);
 	void changeMaxHealth(int _maxHealth);
-	virtual void levelup();
 	void setWon();
+
+	//Levelup
+	virtual void levelup();
 
 	//Items
 	bool items(); 
@@ -81,4 +81,3 @@ protected:
 
 };
 
-#endif

@@ -14,6 +14,7 @@ Cat::Cat() {
 	// 1 - 4
 	magicdefense = rand() % 3 + 1;
 }
+
 void Cat::enemyAction(Character* user1) {
 	std::cout << "It's the Black Cat of Death's turn. \n";
 	sleep();

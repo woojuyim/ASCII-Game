@@ -23,7 +23,6 @@ void UserManager:: printStart() {
 	std::cout << "Welcome to the ASCII game! Press the number! \n";
 	std::cout << "1. Create an Account.     "
 		<< "2. Login.     "
-		<< "3. Show all Accounts made.     "
 		<< "0. Quit     \n";
 
 }
@@ -80,7 +79,7 @@ void UserManager::createAccount() {
 		userList.push_back(newUser);
 	}
 	else {
-		std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+		sleep();
 		std::cout << "There is an account with that username or password already. \n";
 	}
 }
@@ -94,7 +93,7 @@ void UserManager::restart(User* user) {
 		w->gameMenu(user->getCharacter(), user);
 	}
 	else {
-		std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+		sleep();
 		std::cout << "I guess not playing the game isn't that bad... maybe? \n";
 	}
 }
@@ -166,7 +165,7 @@ void UserManager::loadManualSave(User* user) {
 		}
 	}
 	else {
-		std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+		sleep();
 		std::cout << "There is no manual save state \n";
 	}
 }
@@ -183,7 +182,7 @@ void UserManager::loadAutoSave(User* user) {
 		}
 	}
 	else {
-		std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+		sleep();
 		std::cout << "There is no auto save state. \n";
 	}
 }
@@ -200,12 +199,12 @@ void UserManager::login() {
 	std::cin >> password;
 	User* u = accountExists(username, password);
 	if (u != nullptr) {
-		std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+		sleep();
 		std::cout << "Login successful. \n ";
 		loginScreen(u);
 	}
 	else {
-		std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+		sleep();
 		std::cout << "There is no account with that username and password. \n";
 	}
 }
@@ -219,18 +218,18 @@ void UserManager::makeCharacter(User* user) {
 		std::cin >> input;
 		if (input == "1") {
 			user->createWarrior();
-			std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+			sleep();
 			std::cout << "Account successfully made! \n";
 			break;
 		}
 		else if (input == "2") {
 			user->createSorcerer();
-			std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+			sleep();
 			std::cout << "Account successfully made! \n";
 			break;
 		}
 		else {
-			std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+			sleep();
 			std::cout << "Select a valid number. \n";
 		}
 	}
@@ -242,14 +241,14 @@ bool UserManager::deleteAccount(User *user) {
 		std::string ask;
 		std::cin >> ask;
 		if (ask == "yes") {
-			std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+			sleep();
 			std::cout << "Delete successful. \n";
 			userList.erase(std::remove(userList.begin(), userList.end(), user), userList.end());
 			delete user;
 			return true;
 		}
 		else {
-			std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+			sleep();
 			std::cout << "I knew you wouldn't ^*^ \n";
 		}
 	}

@@ -15,8 +15,10 @@ void linebreak();
 class World {
 public:
 	World();
-
+	//Move forward 
 	void forward(Character* user1, User* user);
+	
+	//Starting game menu
 	void gameMenu(Character* user1, User* user);
 
 private: 

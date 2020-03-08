@@ -1,6 +1,5 @@
 #include "Nerd.h"
 
-using namespace std;
 Nerd::Nerd() {
 	name = "Modern Day Nerd";
 	level = 2;

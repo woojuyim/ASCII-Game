@@ -1,6 +1,4 @@
 #pragma once
-#ifndef BATTLESYSTEM_H
-#define BATTLESYSTEM_H
 #include "Enemy.h"
 
 void linebreak();
@@ -13,8 +11,13 @@ public:
 	void fight(Enemy* enemy, bool Saved);
 	
 private:
+	//Calculate turn order
 	bool calculateOrder();
+
+	//Running away from fight
 	void run();
+
+	//Gain experience
 	void gainExperience();
 
 	Enemy* enemy;
@@ -24,5 +27,3 @@ private:
 	
 
 };
-
-#endif

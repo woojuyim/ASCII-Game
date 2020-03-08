@@ -1,6 +1,6 @@
-#pragma once
 #ifndef LINEBREAK_H
 #define LINEBREAK_H
+#pragma once
 
 #include <iostream>
 #include <chrono>	
@@ -13,7 +13,7 @@ void linebreak() {
 
 }
 void sleep() {
-	std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+	std::this_thread::sleep_for(std::chrono::milliseconds(800));
 }
 
 #endif

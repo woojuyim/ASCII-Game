@@ -7,10 +7,16 @@ class FinalBoss {
 public:
 	FinalBoss(Character* user1);
 
-	void timer();
+	//Fight Final Boss
 	void fightFinal();
+
+	//Draw
 	void drawfinalboss();
+	
+	//Draw math problems
 	bool math();
+
+	//Ending scene
 	void congrats();
 
 private:

@@ -2,8 +2,6 @@
 #include "Enemy.h"
 
 class Lucy : public Enemy {
-private:
-
 public:
 	Lucy();
 	void draw() override;

@@ -28,7 +28,8 @@ void Juggler::enemyAction(Character* user1) {
 	std::cout << "It's the Juggler's turn. \n";
 	sleep();
 	srand((unsigned)time(0));
-	if ((rand() % 100) < 30) {
+	int chance = rand() % 100;
+	if (chance < 30) {
 		srand((unsigned)time(0));
 		if ((rand() % 100) < 40) {
 			std::cout << "The Juggler threw a knife at you! \n";
@@ -39,6 +40,9 @@ void Juggler::enemyAction(Character* user1) {
 		}
 	}
 
+	else if(chance > 80){
+		std::cout << "The Juggler is taking care of his balls \n";
+	}
 	else {
 		std::cout << "The Juggler threw his balls at you! \n";
 		user1->takedamage(getattack() - user1->getdefense());

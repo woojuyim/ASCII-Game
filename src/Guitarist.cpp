@@ -70,7 +70,7 @@ void Guitarist::getStruck(Character* user1) {
 	else if ((rand() % 100) < 30) {
 		takedamage((user1->getattack() - getdefense()) * 3);
 		sleep();
-		std::cout << "His guitar broke. The Hippie Guitarist started sobbing due to his lack of soul. \n\n";
+		std::cout << "The guitar broke. The Hippie Guitarist started sobbing due to his lack of soul. \n\n";
 		guitar = false;
 	}
 	else {

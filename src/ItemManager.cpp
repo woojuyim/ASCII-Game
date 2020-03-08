@@ -49,7 +49,6 @@ bool ItemManager::itemMenu() {
 		else if (number > 0 && number <= (int)itemlist.size()) {
 			number -= 1;
 			std::cout << "You used the " << itemlist[number] << "\n";
-			sleep();
 			if (itemlist[number] == "Potion")
 				potion();
 			else if (itemlist[number] == "Mega Potion")

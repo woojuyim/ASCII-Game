@@ -1,7 +1,6 @@
-#pragma once
 #ifndef USERMANAGER_H
 #define USERMANAGER_H
-
+#pragma once
 #include "User.h"
 #include "World.h"
 #include <vector>
@@ -16,20 +15,25 @@ public:
 	//Start
 	void startMenu();
 
-	//Login
+	//Login to account
 	void login();
+
+	//Account screen
 	void loginScreen(User* user);
 
 	//Save or Load Screen
-	void loadingscreen(User* user);
 	void restart(User* user);
+
+	//Load Manual Save
 	void loadManualSave(User* user);
+
+	//Load Auto Save
 	void loadAutoSave(User* user);
 
-
-
-	//Account Management
+	//Create account
 	void createAccount();
+	
+	//Delete account
 	bool deleteAccount(User* user);
 
 	//Make Character
