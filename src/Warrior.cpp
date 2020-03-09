@@ -111,12 +111,10 @@ void Warrior::levelup() {
 	++level;
 	if (level == 2) {
 		std::cout << "Someone bought you Guava Tea! \n";
-		std::cout << "You can use it now! \n";
 		abilities.push_back("Guava Tea");
 	}
 	else if (level == 3) {
 		std::cout << "Someone bought you Java Chip Frappuccino! \n";
-		std::cout << "You can use it now! \n";
 		abilities.push_back("Java Chip Frappuccino");
 
 	}
