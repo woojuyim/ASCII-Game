@@ -67,6 +67,9 @@ void Sorcerer::subclassSpecial(Enemy* enemy, std::string& ability) {
 	else if (ability == "Math") {
 		mathAbility(enemy);
 	}
+	else if (ability == "Art History") {
+		arthistory(enemy);
+	}
 	else {
 		throw std::exception("ITEM DOES NOT EXIST");
 	}
@@ -75,18 +78,26 @@ void Sorcerer::physicshw(Enemy* enemy) {
 	std::cout << "You threw your physics homework at the " + enemy->getName() << std::endl;
 	sleep();
 	std::cout << "Hundreds of papers hit " + enemy->getName() + " on the head. \n";
-	int damage = (getmagic() - enemy->getmagicdefense()) * 2;
+	int damage = (getmagic() - enemy->getmagicdefense());
 	enemy->takedamage(damage);
 }
-
 
 void Sorcerer::mathAbility(Enemy* enemy) {
 	std::cout << "You showed the " + enemy->getName() + " how to solve 1 + 1! \n";
 	sleep();
 	std::cout << "The " + enemy->getName() + " was enlightened! \n";
+	int damage = (getmagic() - enemy->getmagicdefense()) * 2;
+	enemy->takedamage(damage);
+}
+
+void Sorcerer::arthistory(Enemy* enemy) {
+	std::cout << "You showed the " + enemy->getName() + " your art history project! \n";
+	sleep();
+	std::cout << "The " + enemy->getName() + " was so bored that he hit himself to stay awake. \n";
 	int damage = (getmagic() - enemy->getmagicdefense()) * 3;
 	enemy->takedamage(damage);
 }
+
 
 void Sorcerer::levelup() {
 	std::cout << "\nYou gained a level up! \n";
@@ -101,7 +112,11 @@ void Sorcerer::levelup() {
 	health = maxhealth;
 	++level;
 	if (level == 2) {
-		std::cout << "You learned Math! \n";
+		std::cout << "You learned how to do Math! \n";
 		abilities.push_back("Math");
+	}
+	else if (level == 3) {
+		std::cout << "You dug up an art history project made years ago! \n";
+		abilities.push_back("Art History");
 	}
 }

@@ -16,6 +16,7 @@ public:
 	//Abilities
 	void physicshw(Enemy* enemy);
 	void mathAbility(Enemy* enemy);
+	void arthistory(Enemy* enemy);
 
 private:
 

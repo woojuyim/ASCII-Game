@@ -16,9 +16,8 @@ public:
 	//Abilities
 	void greentea(Enemy* enemy);
 	void guavatea(Enemy* enemy);
-
+	void javafrap(Enemy* enemy);
 
 private:
-
 
 };

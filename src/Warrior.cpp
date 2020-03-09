@@ -67,6 +67,9 @@ void Warrior::subclassSpecial(Enemy* enemy, std::string& ability) {
 	else if (ability == "Guava Tea") {
 		guavatea(enemy);
 	}
+	else if (ability == "Java Chip Frappuccino") {
+		javafrap(enemy);
+	}
 	else {
 		throw std::exception("ITEM DOES NOT EXIST");
 	}
@@ -85,7 +88,14 @@ void Warrior::guavatea(Enemy* enemy) {
 	sleep();
 	std::cout << "It only caused some second degree burns... \n";
 	enemy->takedamage(2);
-
+}
+void Warrior::javafrap(Enemy* enemy) {
+	std::cout << "You threw Java Chip Frappuccino at the " + enemy->getName() << std::endl;
+	sleep();
+	std::cout << "It was better than the Guava Tea, but also not by much... \n";
+	sleep();
+	std::cout << "It only caused some slight frostbite... \n";
+	enemy->takedamage(3);
 }
 void Warrior::levelup() {
 	std::cout << "\nYou gained a level up! \n";
@@ -100,7 +110,14 @@ void Warrior::levelup() {
 	health = maxhealth;
 	++level;
 	if (level == 2) {
-		std::cout << "You learned Guava Tea! \n";
+		std::cout << "Someone bought you Guava Tea! \n";
+		std::cout << "You can use it now! \n";
 		abilities.push_back("Guava Tea");
+	}
+	else if (level == 3) {
+		std::cout << "Someone bought you Java Chip Frappuccino! \n";
+		std::cout << "You can use it now! \n";
+		abilities.push_back("Java Chip Frappuccino");
+
 	}
 }
