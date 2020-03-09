@@ -102,7 +102,7 @@ void World::gameMenu(Character* user1, User* user) {
 			return;
 		}
 		std::cout << "You have " << user1->getMiles() << " miles left, \n"
-			<< "1. Forward     2. Item     3. Status     4. Save     9. Final Boss     0. Quit \n";
+			<< "1. Forward     2. Item     3. Status     4. Save     0. Quit \n";
 		std::cin >> x;
 		if (x == "1" || x == "forward") {
 			forward(user1, user);

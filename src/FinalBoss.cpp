@@ -14,7 +14,7 @@ FinalBoss::FinalBoss(Character * user1) {
 		"Professor Sonthi congratulates you for being so dumb. \n",
 		"Professor Sonthi congratualates himself for making such great math problems. \n",
 		"Professor Sonthi is going to ask for a raise for his exemplary work on mathematics. \n",
-		"Professor Sonthi thinks vididly about the youth of his day...\n" };
+		"Professor Sonthi thinks vividly about the youth of his day...\n" };
 
 	damageArray = { 10, 5, 4, 3, 100 };
 	this->user1 = user1;
@@ -66,29 +66,29 @@ bool FinalBoss::math() {
 				rand2 = (rand() % 10) + 1;
 				break;
 			case 1:
+				rand1 = (rand() % 10) + 5;
+				rand2 = (rand() % 10) + 5;
+				break;
+			case 2:
+				rand1 = (rand() % 10) + 10;
+				rand2 = (rand() % 10) + 10;
+				break;
+			case 3:
 				rand1 = (rand() % 15) + 5;
 				rand2 = (rand() % 15) + 5;
 				break;
-			case 2:
-				rand1 = (rand() % 20) + 10;
-				rand2 = (rand() % 20) + 10;
-				break;
-			case 3:
-				rand1 = (rand() % 35) + 20;
-				rand2 = (rand() % 35) + 20;
-				break;
 			case 4:
-				rand1 = (rand() % 70) + 30;
-				rand2 = (rand() % 70) + 30;
+				rand1 = (rand() % 15) + 10;
+				rand2 = (rand() % 15) + 10;
 				break;
 		}
 		auto start = high_resolution_clock::now();
 		std::cout << "The answer to this question is: " << rand1 << " * " << rand2 << std::endl
-			<< "There is a 5 second time limit... \n";
+			<< "There is a 10 second time limit... \n";
 		std::cin >> answer;
 		auto end = high_resolution_clock::now();
 		auto duration = duration_cast<seconds>(end - start);
-		if (std::cin.fail() || answer != rand1 * rand2 || duration >= seconds(5)) {
+		if (std::cin.fail() || answer != rand1 * rand2 || duration >= seconds(10)) {
 			std::cin.clear();
 			std::cin.ignore(10000, '\n');
 			sleep();

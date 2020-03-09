@@ -13,7 +13,7 @@ Lucy::Lucy() {
 	health = rand() % 4 + 12;
 	// 0 - 2
 	magicdefense = rand() % 3;
-	bool attract = false;
+	attract = false;
 }
 void Lucy::enemyAction(Character* user1) {
 	std::cout << "It's Lucy's turn. \n";
