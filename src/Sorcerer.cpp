@@ -7,6 +7,7 @@ Sorcerer::Sorcerer() {
 	defense = 2;
 	speed = 6;
 	health = 24;
+	maxhealth = 24;
 	className = "Sorcerer";
 	abilities.push_back("Physics Homework");
 }
@@ -112,10 +113,12 @@ void Sorcerer::levelup() {
 	health = maxhealth;
 	++level;
 	if (level == 2) {
+		sleep();
 		std::cout << "You learned how to do Math! \n";
 		abilities.push_back("Math");
 	}
 	else if (level == 3) {
+		sleep();
 		std::cout << "You dug up an art history project made years ago! \n";
 		abilities.push_back("Art History");
 	}

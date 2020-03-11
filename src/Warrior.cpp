@@ -6,6 +6,7 @@ Warrior::Warrior() {
 	defense = 2;
 	speed = 4;
 	health = 22;
+	maxhealth = 22;
 	className = "Warrior";
 	abilities.push_back("Green Tea");
 }
@@ -110,10 +111,12 @@ void Warrior::levelup() {
 	health = maxhealth;
 	++level;
 	if (level == 2) {
+		sleep();
 		std::cout << "Someone bought you Guava Tea! \n";
 		abilities.push_back("Guava Tea");
 	}
 	else if (level == 3) {
+		sleep();
 		std::cout << "Someone bought you Java Chip Frappuccino! \n";
 		abilities.push_back("Java Chip Frappuccino");
 
