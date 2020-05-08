@@ -1,6 +1,5 @@
 # ASCII Game
-Made in 4th grade
-
+Runs on the console
 ## User Management
 - Create and login multiple accounts
 - Delete accounts
