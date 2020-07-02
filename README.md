@@ -1,5 +1,6 @@
 # ASCII Game
 Runs on the console
+Homage to the old text-based scrolling RPG games
 ## User Management
 - Create and login multiple accounts
 - Delete accounts
