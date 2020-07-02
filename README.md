@@ -1,5 +1,5 @@
 # ASCII Game
-Runs on the console. 
+Runs on the console. <br />
 Homage to the old text-based scrolling RPG games
 ## User Management
 - Create and login multiple accounts
